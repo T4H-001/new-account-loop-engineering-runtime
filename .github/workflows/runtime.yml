@@ -3,7 +3,7 @@ name: Runtime Receipt Proof
 on:
   workflow_dispatch:
   schedule:
-    - cron: '17 */6 * * *'
+    - cron: '*/5 * * * *'
   push:
     paths:
       - '.github/workflows/runtime.yml'
