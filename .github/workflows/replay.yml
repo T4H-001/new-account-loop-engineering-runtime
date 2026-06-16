@@ -1,0 +1,22 @@
+name: Runtime Replay Check
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '43 */12 * * *'
+  push:
+    paths:
+      - 'receipts/**'
+      - 'src/replay-receipts.mjs'
+      - '.github/workflows/replay.yml'
+
+jobs:
+  replay:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Replay receipt ledger
+        run: node src/replay-receipts.mjs
