@@ -2,12 +2,19 @@ name: Runtime Receipt Proof
 
 on:
   workflow_dispatch:
+  schedule:
+    - cron: '17 */6 * * *'
   push:
     paths:
       - '.github/workflows/runtime.yml'
       - 'src/**'
       - 'schemas/**'
       - 'LOOP_ENGINEERING_101.md'
+      - 'receipts/**'
+
+permissions:
+  contents: write
+  actions: read
 
 jobs:
   runtime-proof:
@@ -16,6 +23,8 @@ jobs:
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
+        with:
+          persist-credentials: true
 
       - name: Show runtime context
         run: |
@@ -23,13 +32,27 @@ jobs:
           echo "WORKFLOW=$GITHUB_WORKFLOW"
           echo "RUN_ID=$GITHUB_RUN_ID"
           echo "SHA=$GITHUB_SHA"
-          find . -maxdepth 3 -type f | sort
+          find . -maxdepth 4 -type f | sort
+
+      - name: Replay existing receipt ledger
+        run: node src/replay-receipts.mjs
 
       - name: Generate runtime receipt
         run: node src/loop-runner.mjs
 
       - name: Validate runtime receipt
         run: node src/validate-receipts.mjs
+
+      - name: Persist runtime receipt
+        run: node src/persist-receipt.mjs
+
+      - name: Commit persisted receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add receipts/runtime receipts/ledger.ndjson runtime-receipts
+          git commit -m "receipt: persist runtime proof ${GITHUB_RUN_ID}" || echo "NO_RECEIPT_CHANGES"
+          git push
 
       - name: Upload runtime receipt artifact
         uses: actions/upload-artifact@v4
