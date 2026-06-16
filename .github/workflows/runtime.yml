@@ -1,0 +1,39 @@
+name: Runtime Receipt Proof
+
+on:
+  workflow_dispatch:
+  push:
+    paths:
+      - '.github/workflows/runtime.yml'
+      - 'src/**'
+      - 'schemas/**'
+      - 'LOOP_ENGINEERING_101.md'
+
+jobs:
+  runtime-proof:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Show runtime context
+        run: |
+          echo "REPOSITORY=$GITHUB_REPOSITORY"
+          echo "WORKFLOW=$GITHUB_WORKFLOW"
+          echo "RUN_ID=$GITHUB_RUN_ID"
+          echo "SHA=$GITHUB_SHA"
+          find . -maxdepth 3 -type f | sort
+
+      - name: Generate runtime receipt
+        run: node src/loop-runner.mjs
+
+      - name: Validate runtime receipt
+        run: node src/validate-receipts.mjs
+
+      - name: Upload runtime receipt artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: runtime-receipts
+          path: runtime-receipts/*.json
+          if-no-files-found: error
