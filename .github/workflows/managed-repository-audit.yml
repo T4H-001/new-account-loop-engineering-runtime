@@ -1,0 +1,42 @@
+name: Managed Repository Audit
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '31 */6 * * *'
+  push:
+    paths:
+      - 'managed-repositories.json'
+      - 'src/audit-managed-repositories.mjs'
+      - '.github/workflows/managed-repository-audit.yml'
+
+permissions:
+  contents: write
+
+jobs:
+  audit-managed-repositories:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout runtime repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Audit managed repositories
+        run: node src/audit-managed-repositories.mjs
+
+      - name: Commit managed repository audit receipt
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add receipts/managed-repositories
+          git commit -m "receipt: managed repository audit ${GITHUB_RUN_ID}" || echo "NO_MANAGED_AUDIT_CHANGES"
+          git push
+
+      - name: Upload managed repository audit receipt
+        uses: actions/upload-artifact@v4
+        with:
+          name: managed-repository-audit
+          path: receipts/managed-repositories/*.json
+          if-no-files-found: error
