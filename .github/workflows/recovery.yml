@@ -1,0 +1,30 @@
+name: Runtime Recovery Check
+
+on:
+  workflow_dispatch:
+
+jobs:
+  recovery-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Verify recovery preconditions
+        run: |
+          test -f src/loop-runner.mjs
+          test -f src/validate-receipts.mjs
+          test -f src/persist-receipt.mjs
+          test -f src/replay-receipts.mjs
+          test -f receipts/ledger.ndjson
+          echo "RECOVERY_PRECONDITIONS_OK"
+
+      - name: Replay ledger before recovery
+        run: node src/replay-receipts.mjs
+
+      - name: Generate recovery receipt
+        run: node src/loop-runner.mjs
+
+      - name: Validate recovery receipt
+        run: node src/validate-receipts.mjs
