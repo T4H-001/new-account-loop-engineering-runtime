@@ -1,0 +1,43 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/T4H001/new-account-loop-engineering-runtime/schemas/receipt.schema.json",
+  "title": "Loop Runtime Receipt",
+  "type": "object",
+  "required": [
+    "status",
+    "timestamp",
+    "repository",
+    "workflow",
+    "run_id",
+    "commit_sha",
+    "evidence",
+    "classification",
+    "next_action"
+  ],
+  "properties": {
+    "status": { "type": "string", "enum": ["REAL", "PARTIAL", "BLOCKED", "ASPIRATIONAL"] },
+    "timestamp": { "type": "string" },
+    "repository": { "type": "string" },
+    "workflow": { "type": "string" },
+    "run_id": { "type": "string" },
+    "commit_sha": { "type": "string" },
+    "duration_seconds": { "type": ["number", "null"] },
+    "evidence": {
+      "type": "object",
+      "required": ["runner", "checkout", "receipt_written"],
+      "properties": {
+        "runner": { "type": "boolean" },
+        "checkout": { "type": "boolean" },
+        "receipt_written": { "type": "boolean" },
+        "artifact_uploaded": { "type": "boolean" },
+        "validation_passed": { "type": "boolean" }
+      },
+      "additionalProperties": true
+    },
+    "classification": { "type": "string", "enum": ["REAL", "PARTIAL", "BLOCKED", "ASPIRATIONAL"] },
+    "gaps": { "type": "array", "items": { "type": "string" } },
+    "recovery_action": { "type": "string" },
+    "next_action": { "type": "string" }
+  },
+  "additionalProperties": true
+}
