@@ -1,0 +1,13 @@
+name: Runtime Proof
+
+on:
+  workflow_dispatch:
+  push:
+
+jobs:
+  proof:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Proof
+        run: echo "RUNTIME_PROOF_OK"
