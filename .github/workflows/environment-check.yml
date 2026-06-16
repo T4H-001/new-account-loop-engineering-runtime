@@ -1,0 +1,43 @@
+name: Runtime Environment Check
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  actions: read
+
+jobs:
+  environment-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+        with:
+          persist-credentials: true
+
+      - name: Verify repository context
+        run: |
+          echo "REPOSITORY=$GITHUB_REPOSITORY"
+          echo "WORKFLOW=$GITHUB_WORKFLOW"
+          echo "RUN_ID=$GITHUB_RUN_ID"
+          echo "SHA=$GITHUB_SHA"
+          echo "ACTOR=$GITHUB_ACTOR"
+
+      - name: Verify write permission
+        run: |
+          mkdir -p environment-checks
+          date -u +"%Y-%m-%dT%H:%M:%SZ" > environment-checks/latest.txt
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add environment-checks/latest.txt
+          git commit -m "receipt: environment write check ${GITHUB_RUN_ID}" || echo "NO_ENVIRONMENT_CHANGES"
+          git push
+
+      - name: Verify artifact upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: environment-check
+          path: environment-checks/latest.txt
+          if-no-files-found: error
