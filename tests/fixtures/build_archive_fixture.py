@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 import argparse
+import io
+import tarfile
 import zipfile
 from pathlib import Path
 
@@ -14,3 +16,8 @@ with zipfile.ZipFile(out / "bank-a.zip", "w", zipfile.ZIP_DEFLATED) as zf:
 with zipfile.ZipFile(out / "bank-b.zip", "w", zipfile.ZIP_DEFLATED) as zf:
     zf.writestr("FY2425/statement-02.txt", b"fixture statement two\n")
     zf.writestr("FY2425/shared-copy.txt", b"fixture duplicate\n")
+with tarfile.open(out / "runtime.tar.gz", "w:gz") as tf:
+    payload = b"fixture runtime evidence\n"
+    info = tarfile.TarInfo("runtime/evidence.txt")
+    info.size = len(payload)
+    tf.addfile(info, io.BytesIO(payload))
