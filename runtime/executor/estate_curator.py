@@ -129,7 +129,7 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
     registry = json.loads(registry_path.read_text())
     worker = registry["workers"][WORKER_ID]
     checks = {
-        "worker_registered": worker["state"] in {"REGISTERED", "VERIFIED"},
+        "worker_registered": worker["state"] in {"REGISTERED", "VERIFIED", "ACTIVE"},
         "execution_allowed": worker["execution_allowed"] is True,
         "principal_bound": worker["principal_id"] == PRINCIPAL_ID,
         "source_nonempty": bool(source_bytes),
@@ -137,7 +137,7 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
     if not all(checks.values()):
         raise RuntimeError(f"preflight blocked: {checks}")
 
-    observed_at = now or datetime.now(timezone.utc).isoformat()
+    observed_at = now or datetime.now(timezone.utc).isoformat()\n    state_after = "ACTIVE" if worker["state"] == "ACTIVE" else "VERIFIED"
     objects, relationships = extract(source_bytes, input_path.name)
     if not objects or len(objects) != len(relationships):
         raise RuntimeError("extraction produced an invalid graph candidate set")
@@ -198,7 +198,7 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
             "candidate_relationships": len(relationships),
             "review_id": review["review_id"],
             "promotion_state": "PENDING_HUMAN_REVIEW",
-            "worker_state_after": "VERIFIED",
+            "worker_state_after": state_after,
         },
         "evidence": evidence,
     }
@@ -224,7 +224,7 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
     before = worker["state"]
     worker.update(
         {
-            "state": "VERIFIED",
+            "state": state_after,
             "health": "passing",
             "last_verification": observed_at,
             "receipt_reference": receipt["receipt_id"],
@@ -238,7 +238,7 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
             "event_id": telemetry["event_id"],
             "worker_id": WORKER_ID,
             "from": before,
-            "to": "VERIFIED",
+            "to": state_after,
             "receipt_id": receipt["receipt_id"],
             "receipt_hash": receipt["receipt_hash"],
         }
