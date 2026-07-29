@@ -1,0 +1,27 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://runtime-real.tech4humanity.net/schemas/relationship.schema.json",
+  "title": "Governed Estate Relationship",
+  "type": "object",
+  "required": [
+    "relationship_id",
+    "subject_id",
+    "predicate",
+    "object_id",
+    "evidence",
+    "lifecycle_state",
+    "created_by"
+  ],
+  "properties": {
+    "relationship_id": {"type": "string", "pattern": "^rel-[a-f0-9]{24}$"},
+    "subject_id": {"type": "string"},
+    "predicate": {"type": "string"},
+    "object_id": {"type": "string"},
+    "evidence": {"type": "object"},
+    "lifecycle_state": {
+      "enum": ["CANDIDATE", "REVIEWED", "APPROVED", "CANONICAL", "REJECTED", "ARCHIVED"]
+    },
+    "created_by": {"type": "string"}
+  },
+  "additionalProperties": false
+}
