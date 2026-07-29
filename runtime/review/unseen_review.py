@@ -25,10 +25,10 @@ checks = {
     "status_succeeded": receipt.get("status") == "succeeded",
     "promotion_pending": receipt.get("result", {}).get("promotion_state") == "PENDING_HUMAN_REVIEW",
     "receipt_telemetry_bound": telemetry.get("receipt_id") == receipt.get("receipt_id"),
-    "objects_nonempty": len(objects) > 0,
-    "relationships_nonempty": len(relationships) > 0,
-    "object_count_matches": len(objects) == receipt.get("result", {}).get("candidate_objects"),
-    "relationship_count_matches": len(relationships) == receipt.get("result", {}).get("candidate_relationships"),
+    "objects_nonempty": len(objects.get("objects", [])) > 0,
+    "relationships_nonempty": len(relationships.get("relationships", [])) > 0,
+    "object_count_matches": len(objects.get("objects", [])) == receipt.get("result", {}).get("candidate_objects"),
+    "relationship_count_matches": len(relationships.get("relationships", [])) == receipt.get("result", {}).get("candidate_relationships"),
 }
 passed = all(checks.values())
 review = {
