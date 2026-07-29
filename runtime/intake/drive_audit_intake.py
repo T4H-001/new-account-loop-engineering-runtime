@@ -30,6 +30,12 @@ elif manifest_type == "google_drive_audit_recursive_snapshot":
     unreadable_folder_ids = manifest.get("unreadable_folder_ids", [])
     folders_at_limit = manifest.get("folders_at_connector_limit", [])
     completeness = manifest.get("completeness", "PARTIAL")
+elif manifest_type == "google_drive_audit_exhaustive_metadata_snapshot":
+    entries = manifest.get("files", [])
+    governed_roots = manifest.get("root_folder_ids", [])
+    unreadable_folder_ids = [x.get("id") for x in manifest.get("unreadable_folders", [])]
+    folders_at_limit = manifest.get("folders_at_request_limit", [])
+    completeness = manifest.get("completeness", "PARTIAL")
 else:
     raise SystemExit("unexpected manifest type")
 
@@ -64,6 +70,9 @@ source = [
     f"Unique inventory entries: {len(entries)}",
     f"Inventory bytes: {inventory_bytes}",
     f"Metadata completeness: {completeness}",
+    f"Archive containers: {int(manifest.get('archive_count') or 0)}",
+    f"Archive bytes: {int(manifest.get('archive_bytes') or 0)}",
+    f"Archive-member inventory: {manifest.get('controls', {}).get('archive_member_inventory_status', 'PENDING')}",
     "",
     "## Controls",
     "- Metadata-only intake; private document bytes are not committed.",
@@ -103,6 +112,9 @@ receipt = {
     "metadata_completeness": completeness,
     "unreadable_folder_ids": unreadable_folder_ids,
     "folders_at_connector_limit": folders_at_limit,
+    "archive_count": int(manifest.get("archive_count") or 0),
+    "archive_bytes": int(manifest.get("archive_bytes") or 0),
+    "archive_member_inventory_status": manifest.get("controls", {}).get("archive_member_inventory_status", "PENDING"),
     "content_hash_status": "PENDING_RAW_BYTE_INGEST",
     "review_state": "PENDING_HUMAN_REVIEW",
 }
