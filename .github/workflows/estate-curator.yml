@@ -93,6 +93,19 @@ jobs:
             --output runtime/qualification/unseen-review.json
           grep -q '"outcome": "PASS"' runtime/qualification/unseen-review.json
           grep -q '"promotion_effect": "NONE"' runtime/qualification/unseen-review.json
+      - name: Promote qualified worker to ACTIVE
+        run: |
+          set -euo pipefail
+          promotion_id="promotion-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 runtime/promotion/promote_estate_curator.py \
+            --root . \
+            --run-id "${promotion_id}" \
+            --approved-by "T4H001" \
+            | tee estate-curator-promotion-receipt.json
+          grep -q '"to_state": "ACTIVE"' estate-curator-promotion-receipt.json
+          grep -q '"state": "ACTIVE"' runtime/registry/worker_state.json
+          test -s "runtime/evidence/promotions/${promotion_id}.json"
+          test -s "runtime/evidence/telemetry/${promotion_id}-promotion.json"
       - uses: actions/upload-artifact@v4
         with:
           name: estate-curator-three-source-${{ github.run_id }}-${{ github.run_attempt }}
@@ -100,6 +113,8 @@ jobs:
           retention-days: 30
           path: |
             estate-curator-receipt-*.json
+            estate-curator-promotion-receipt.json
+            runtime/evidence/promotions/
             governanceos/review-queue/
             runtime/evidence/receipts/
             runtime/evidence/telemetry/
