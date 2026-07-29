@@ -63,6 +63,36 @@ jobs:
           done
           grep -q '"state": "VERIFIED"' runtime/registry/worker_state.json
           python3 -c 'import json; d=json.load(open("runtime/registry/worker_state.json")); r=d["workers"]["wk-estate-curator-001"]["successful_distinct_runs"]; assert len(r) >= 3, r'
+      - name: Run ten known-thread benchmark
+        run: |
+          set -euo pipefail
+          mkdir -p runtime/qualification/known-benchmark
+          passed=0
+          for source in tests/fixtures/estate-curator-benchmark/*.txt; do
+            case_name="$(basename "${source}" .txt)"
+            run_id="benchmark-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-${case_name}"
+            python3 runtime/executor/estate_curator.py \
+              --root . \
+              --input "${source}" \
+              --run-id "${run_id}" \
+              > "runtime/qualification/known-benchmark/${case_name}-receipt.json"
+            grep -q '"classification": "REAL"' "runtime/qualification/known-benchmark/${case_name}-receipt.json"
+            passed=$((passed + 1))
+          done
+          test "${passed}" -eq 10
+          printf '{"benchmark":"known-thread","passed":%s,"total":10,"status":"PASS"}\n' "${passed}" > runtime/qualification/known-benchmark/summary.json
+      - name: Independently review unseen-thread execution
+        run: |
+          set -euo pipefail
+          unseen_id="github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-source-2"
+          python3 runtime/review/unseen_review.py \
+            --receipt "runtime/evidence/receipts/${unseen_id}.json" \
+            --telemetry "runtime/evidence/telemetry/${unseen_id}.json" \
+            --objects "runtime/graph/runs/${unseen_id}/objects.json" \
+            --relationships "runtime/graph/runs/${unseen_id}/relationships.json" \
+            --output runtime/qualification/unseen-review.json
+          grep -q '"outcome": "PASS"' runtime/qualification/unseen-review.json
+          grep -q '"promotion_effect": "NONE"' runtime/qualification/unseen-review.json
       - uses: actions/upload-artifact@v4
         with:
           name: estate-curator-three-source-${{ github.run_id }}-${{ github.run_attempt }}
@@ -75,3 +105,4 @@ jobs:
             runtime/evidence/telemetry/
             runtime/graph/runs/
             runtime/registry/worker_state.json
+            runtime/qualification/
