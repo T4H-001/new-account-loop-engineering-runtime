@@ -1,0 +1,36 @@
+{
+  "ledger": [],
+  "workers": {
+    "capability-auditor-001": {
+      "capabilities": [
+        "load_runtime_registry",
+        "validate_capabilities",
+        "classify_state",
+        "emit_receipt",
+        "update_registry"
+      ],
+      "execution_allowed": true,
+      "health": "unverified",
+      "principal_id": "principal:capability-auditor-001",
+      "state": "REGISTERED",
+      "successful_distinct_runs": []
+    },
+    "wk-estate-curator-001": {
+      "capabilities": [
+        "read_bounded_text_source",
+        "hash_source",
+        "extract_typed_candidates",
+        "create_candidate_relationships",
+        "submit_review",
+        "emit_receipt",
+        "emit_telemetry",
+        "update_registry"
+      ],
+      "execution_allowed": true,
+      "health": "unverified",
+      "principal_id": "principal:wk-estate-curator-001",
+      "state": "REGISTERED",
+      "successful_distinct_runs": []
+    }
+  }
+}

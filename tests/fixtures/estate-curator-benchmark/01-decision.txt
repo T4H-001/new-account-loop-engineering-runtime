@@ -1,0 +1,6 @@
+# Known Thread 01 — Decision
+Owner: T4H001
+Decision: Preserve original source evidence before classification.
+Evidence: Approved governance note.
+Dependency: Evidence registry.
+Lifecycle: accepted.

@@ -1,0 +1,28 @@
+# Tax Audit Evidence Estate
+
+## Objective
+Preserve and classify the FY24/25 R&D tax audit evidence without inventing expenditure or eligibility.
+
+## Decisions
+- Contractor costs are closed at zero unless supported by source evidence.
+- Davies Collison Cave costs are invalidated for the current claim.
+- Personal-account business transactions remain director-funded candidates pending classification.
+
+## Evidence
+- Two ANZ accounts and two Commonwealth Bank accounts contain mixed personal and business transactions.
+- Every accepted transaction requires source account, transaction date, amount, description and evidence reference.
+- Travel, accommodation, transport, telephone, utilities and occupancy costs require business-purpose and apportionment evidence.
+
+## Controls
+- Preserve original bank-statement bytes and SHA-256 hashes.
+- Do not infer a tax deduction or R&D eligibility from merchant name alone.
+- Route ambiguous transactions to human review.
+- Maintain lineage from statement row to workbook classification and supporting document.
+
+## Dependencies
+- Google Drive source inventory.
+- Lossless audit workbook.
+- Human approval for legal and tax classifications.
+
+## Expected outcome
+Produce candidate evidence objects and relationships, submit them to review, and make no filing or financial-system change.

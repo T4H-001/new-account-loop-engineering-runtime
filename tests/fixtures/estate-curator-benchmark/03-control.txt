@@ -1,0 +1,6 @@
+# Known Thread 03 — Control
+Owner: T4H001
+Control: Fail closed when source bytes or principal binding are missing.
+Evidence: Qualification policy.
+Dependency: Receipt emitter.
+Lifecycle: active control.

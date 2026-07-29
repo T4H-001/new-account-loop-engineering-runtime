@@ -1,0 +1,28 @@
+# Estate Intelligence
+
+The organisation must preserve business, human and technical value.
+
+## Decisions
+
+* Decision: runtime is one capability, not the parent category.
+* Every retained object must link to an exact source occurrence.
+
+## Opportunities
+
+* Opportunity: package the reusable harness in a visible capability catalogue.
+* Customer pricing requires commercial approval.
+
+## Research
+
+* Research hypothesis: repeated abandoned paths contain recoverable value.
+
+## Runtime
+
+* Still required: persist typed relationships in the canonical graph.
+* Missing telemetry must block promotion.
+* The next action is a bounded, replayable curator run.
+
+## Culture and trust
+
+* Human trust requires visible uncertainty and evidence.
+* A recurring pattern should enter the Patterns Register.

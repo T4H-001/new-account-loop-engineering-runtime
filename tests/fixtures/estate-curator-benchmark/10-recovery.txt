@@ -1,0 +1,6 @@
+# Known Thread 10 — Recovery
+Owner: T4H001
+Recovery: Retry failed execution with a new run identifier while preserving failure evidence.
+Control: Idempotent replay and collision fail-closed.
+Evidence: Ledger transition.
+Lifecycle: tested.

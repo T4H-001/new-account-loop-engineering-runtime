@@ -1,0 +1,41 @@
+schema_version: 1
+worker_id: wk-estate-curator-001
+name: Estate Intelligence Curator
+owner: T4H001
+principal_id: principal:wk-estate-curator-001
+runtime: runtime-real
+lifecycle_state: REGISTERED
+execution_allowed: true
+purpose: >
+  Preserve a complete source, extract multi-domain candidate objects, create
+  source-linked candidate relationships, and submit the run for governed review.
+capabilities:
+  - read_bounded_text_source
+  - hash_source
+  - extract_typed_candidates
+  - create_candidate_relationships
+  - submit_review
+  - emit_receipt
+  - emit_telemetry
+  - update_registry
+promotion:
+  verified_requires:
+    - receipt_valid
+    - telemetry_observed
+    - graph_readback
+    - registry_readback
+    - idempotent_replay
+  active_requires:
+    - three_distinct_successful_runs
+    - ten_known_thread_qualification
+    - one_unseen_thread_review
+    - steward_approval
+authority:
+  may:
+    - create_candidate_objects
+    - create_candidate_relationships
+    - append_review_queue
+  may_not:
+    - promote_canonical_knowledge
+    - delete_source
+    - mutate_production

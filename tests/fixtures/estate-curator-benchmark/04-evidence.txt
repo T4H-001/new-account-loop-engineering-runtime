@@ -1,0 +1,6 @@
+# Known Thread 04 — Evidence
+Owner: T4H001
+Evidence: SHA-256 source hash and immutable receipt reference.
+Decision: Never substitute memory for source bytes.
+Dependency: Evidence store.
+Lifecycle: preserved.

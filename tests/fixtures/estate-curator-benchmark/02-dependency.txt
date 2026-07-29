@@ -1,0 +1,6 @@
+# Known Thread 02 — Dependency
+Owner: T4H001
+Object: Estate curator worker.
+Dependency: Runtime registry and review queue.
+Evidence: Worker manifest.
+Lifecycle: verified.

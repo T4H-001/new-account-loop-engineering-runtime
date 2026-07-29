@@ -1,0 +1,6 @@
+# Known Thread 09 — Tax Audit
+Owner: T4H001
+Decision: Merchant name alone cannot establish deductibility.
+Evidence: Bank statement and invoice.
+Review: Tax classification requires approval.
+Lifecycle: candidate.

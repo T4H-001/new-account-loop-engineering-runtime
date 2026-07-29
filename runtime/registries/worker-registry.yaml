@@ -1,0 +1,48 @@
+schema_version: 2
+registry: worker
+last_updated: 2026-07-27
+
+workers:
+  - id: discovery-worker
+    purpose: discovery_and_research
+    runtime: runtime-real
+    status: UNVERIFIED_LEGACY_CLAIM
+  - id: evidence-worker
+    purpose: evidence_collection_and_validation
+    runtime: runtime-real
+    status: UNVERIFIED_LEGACY_CLAIM
+  - id: github-engineer
+    purpose: repository_operations
+    runtime: runtime-real
+    status: UNVERIFIED_LEGACY_CLAIM
+  - id: drive-harvester
+    purpose: document_ingestion
+    runtime: runtime-real
+    status: MIGRATING
+  - id: estate-intelligence-agent
+    purpose: runtime_estate_analysis
+    runtime: runtime-real
+    status: SUPERSEDED_BY_WK_ESTATE_CURATOR_001
+  - id: wk-estate-curator-001
+    owner: T4H001
+    purpose: governed_multi_domain_estate_curation
+    runtime: runtime-real
+    principal_id: principal:wk-estate-curator-001
+    capability:
+      - extract_typed_candidates
+      - create_candidate_relationships
+      - submit_review
+      - emit_receipt
+      - emit_telemetry
+    receipt: required
+    lifecycle: REGISTERED
+    status: REGISTERED
+
+rules:
+  required:
+    - owner
+    - runtime
+    - principal_id
+    - capability
+    - receipt
+    - lifecycle

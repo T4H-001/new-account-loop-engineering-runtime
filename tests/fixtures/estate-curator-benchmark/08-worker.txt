@@ -1,0 +1,6 @@
+# Known Thread 08 — Worker
+Owner: T4H001
+Worker: Estate Intelligence Curator.
+Capability: Extract governed candidates from bounded text.
+Evidence: Runtime receipt.
+Lifecycle: verified.

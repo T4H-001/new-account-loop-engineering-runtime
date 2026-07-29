@@ -1,0 +1,6 @@
+# Known Thread 07 — Source
+Owner: T4H001
+Source: Google Drive working evidence folder.
+Control: Record content hash and source path.
+Dependency: Drive inventory.
+Lifecycle: discovered.

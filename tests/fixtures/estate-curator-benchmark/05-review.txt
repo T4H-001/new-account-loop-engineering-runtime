@@ -1,0 +1,6 @@
+# Known Thread 05 — Review
+Owner: T4H001
+Review: Ambiguous candidates require human review.
+Control: No automatic promotion.
+Evidence: Review queue submission.
+Lifecycle: pending review.
