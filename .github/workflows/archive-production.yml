@@ -1,0 +1,103 @@
+name: Production Archive Intake
+
+on:
+  pull_request:
+    paths:
+      - ".github/workflows/archive-production.yml"
+      - "runtime/intake/archive_inventory.py"
+      - "runtime/intake/verify_archive_delivery.py"
+      - "tests/test_archive_delivery.py"
+  workflow_dispatch:
+    inputs:
+      archive_path:
+        description: "Absolute path on the labelled Mac runner containing exactly the 16 source archives"
+        required: true
+        type: string
+      confirmation:
+        description: "Type EXECUTE_16_ARCHIVE_PRODUCTION"
+        required: true
+        type: string
+
+permissions:
+  contents: read
+
+concurrency:
+  group: production-archive-intake
+  cancel-in-progress: false
+
+jobs:
+  validate-production-gate:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run complete test suite
+        run: python3 -m unittest discover -s tests -v
+      - name: Validate production workflow controls
+        run: |
+          grep -Fq 'self-hosted, macOS, audit-bridge' .github/workflows/archive-production.yml
+          grep -Fq 'EXECUTE_16_ARCHIVE_PRODUCTION' .github/workflows/archive-production.yml
+          grep -Fq 'source_mutation' runtime/intake/archive_inventory.py
+
+  execute-production-archive-intake:
+    if: github.event_name == 'workflow_dispatch'
+    runs-on: [self-hosted, macOS, audit-bridge]
+    timeout-minutes: 30
+    env:
+      ARCHIVE_INPUT_PATH: ${{ inputs.archive_path }}
+      EXECUTION_CONFIRMATION: ${{ inputs.confirmation }}
+    steps:
+      - uses: actions/checkout@v4
+      - name: Enforce explicit production confirmation
+        run: |
+          set -euo pipefail
+          test "${EXECUTION_CONFIRMATION}" = "EXECUTE_16_ARCHIVE_PRODUCTION"
+          test -d "${ARCHIVE_INPUT_PATH}"
+      - name: Verify exact private source delivery
+        run: |
+          set -euo pipefail
+          python3 runtime/intake/verify_archive_delivery.py \
+            --manifest runtime/intake/manifests/fy2425-drive-audit-exhaustive-snapshot.json \
+            --input-dir "${ARCHIVE_INPUT_PATH}" \
+            --output archive-production-delivery.json \
+            | tee archive-production-delivery-receipt.json
+          python3 -c 'import json; r=json.load(open("archive-production-delivery.json")); assert r["classification"] == "REAL"; assert r["archive_count"] == 16; assert r["archive_bytes"] == 48318194; assert r["source_mutation"] == "NONE"'
+      - name: Execute lossless production archive inventory
+        run: |
+          set -euo pipefail
+          run_id="archive-production-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 runtime/intake/archive_inventory.py \
+            --input-dir "${ARCHIVE_INPUT_PATH}" \
+            --root . \
+            --run-id "${run_id}" \
+            | tee archive-production-receipt.json
+          python3 -c 'import json; r=json.load(open("archive-production-receipt.json")); assert r["classification"] == "REAL"; assert r["archive_count"] == 16; assert r["source_mutation"] == "NONE"; assert r["review_state"] == "PENDING_HUMAN_REVIEW"'
+          test -s "runtime/evidence/archive/${run_id}-inventory.json"
+          test -s "runtime/evidence/archive/${run_id}-receipt.json"
+          test -s "runtime/evidence/telemetry/${run_id}-archive.json"
+          test -s "runtime/evidence/ledger/${run_id}-archive.json"
+      - name: Verify production evidence linkage
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path("archive-production-receipt.json").read_text())
+          run_id = receipt["run_id"]
+          telemetry = json.loads(Path(f"runtime/evidence/telemetry/{run_id}-archive.json").read_text())
+          ledger = json.loads(Path(f"runtime/evidence/ledger/{run_id}-archive.json").read_text())
+          assert telemetry["receipt_id"] == ledger["receipt_id"] == receipt["receipt_id"]
+          assert telemetry["receipt_hash"] == ledger["receipt_hash"] == receipt["receipt_hash"]
+          assert ledger["evidence_hash"] == receipt["evidence_hash"]
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: archive-production-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            archive-production-delivery.json
+            archive-production-delivery-receipt.json
+            archive-production-receipt.json
+            runtime/evidence/archive/
+            runtime/evidence/telemetry/
+            runtime/evidence/ledger/
