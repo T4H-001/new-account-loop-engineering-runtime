@@ -1,0 +1,74 @@
+name: FY2425 Drive Audit Intake
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/drive-audit-intake.yml"
+      - "runtime/intake/**"
+      - "runtime/executor/estate_curator.py"
+      - "runtime/registry/worker_state.json"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/drive-audit-intake.yml"
+      - "runtime/intake/**"
+      - "runtime/executor/estate_curator.py"
+      - "runtime/registry/worker_state.json"
+
+permissions:
+  contents: read
+
+jobs:
+  ingest-drive-audit-snapshot:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Validate tests
+        run: python3 -m unittest discover -s tests -v
+      - name: Govern Drive metadata intake
+        run: |
+          set -euo pipefail
+          intake_id="drive-intake-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 runtime/intake/drive_audit_intake.py \
+            --root . \
+            --manifest runtime/intake/manifests/fy2425-drive-audit-snapshot.json \
+            --run-id "${intake_id}" \
+            --output-source runtime/intake/generated/fy2425-drive-audit-source.txt \
+            | tee drive-audit-intake-receipt.json
+          test -s "runtime/evidence/intake/${intake_id}.json"
+          test -s "runtime/evidence/telemetry/${intake_id}-intake.json"
+          grep -q '"classification": "REAL"' drive-audit-intake-receipt.json
+          grep -q '"entry_count": 123' drive-audit-intake-receipt.json
+      - name: Execute ACTIVE curator against live snapshot
+        run: |
+          set -euo pipefail
+          curator_id="drive-curator-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 runtime/executor/estate_curator.py \
+            --root . \
+            --input runtime/intake/generated/fy2425-drive-audit-source.txt \
+            --run-id "${curator_id}" \
+            | tee drive-audit-curator-receipt.json
+          test -s "runtime/evidence/receipts/${curator_id}.json"
+          test -s "runtime/evidence/telemetry/${curator_id}.json"
+          test -s "runtime/graph/runs/${curator_id}/objects.json"
+          test -s "runtime/graph/runs/${curator_id}/relationships.json"
+          grep -q '"classification": "REAL"' drive-audit-curator-receipt.json
+          grep -q '"worker_state_after": "ACTIVE"' drive-audit-curator-receipt.json
+          grep -q '"state": "ACTIVE"' runtime/registry/worker_state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: fy2425-drive-audit-intake-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            drive-audit-intake-receipt.json
+            drive-audit-curator-receipt.json
+            runtime/intake/manifests/fy2425-drive-audit-snapshot.json
+            runtime/intake/generated/
+            runtime/evidence/intake/
+            runtime/evidence/receipts/
+            runtime/evidence/telemetry/
+            runtime/graph/runs/
+            runtime/registry/worker_state.json
+            governanceos/review-queue/
