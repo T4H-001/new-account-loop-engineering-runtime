@@ -23,7 +23,12 @@ class EstateCuratorTest(unittest.TestCase):
             run_id = "estate-curator-test-001"
             now = "2026-07-27T09:00:00+00:00"
 
-            initial_registry = json.loads((fixture / "runtime/registry/worker_state.json").read_text())\n            initial_state = initial_registry["workers"][MODULE.WORKER_ID]["state"]\n            initial_ledger_count = len(initial_registry["ledger"])\n            expected_state = "ACTIVE" if initial_state == "ACTIVE" else "VERIFIED"\n\n            first = MODULE.run(fixture, source, run_id, now)
+            initial_registry = json.loads((fixture / "runtime/registry/worker_state.json").read_text())
+            initial_state = initial_registry["workers"][MODULE.WORKER_ID]["state"]
+            initial_ledger_count = len(initial_registry["ledger"])
+            expected_state = "ACTIVE" if initial_state == "ACTIVE" else "VERIFIED"
+
+            first = MODULE.run(fixture, source, run_id, now)
             registry_path = fixture / "runtime/registry/worker_state.json"
             registry_before_replay = registry_path.read_bytes()
             replay = MODULE.run(fixture, source, run_id, "2099-01-01T00:00:00+00:00")
