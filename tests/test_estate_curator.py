@@ -56,8 +56,8 @@ class EstateCuratorTest(unittest.TestCase):
             self.assertTrue(all(item["lifecycle_state"] == "CANDIDATE" for item in objects))
             self.assertEqual(first, replay)
             self.assertEqual(registry_before_replay, registry_path.read_bytes())
-            self.assertEqual(1, len(registry["ledger"]))
-            self.assertNotEqual("ACTIVE", worker["state"])
+            self.assertEqual(initial_ledger_count + 1, len(registry["ledger"]))
+            self.assertEqual(expected_state, first["result"]["worker_state_after"])
 
     def test_run_id_collision_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:
