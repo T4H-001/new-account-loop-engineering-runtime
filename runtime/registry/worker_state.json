@@ -1,5 +1,15 @@
 {
-  "ledger": [],
+  "ledger": [
+    {
+      "approved_by": "T4H001",
+      "event_id": "evt-d282466718a3a7c9c510de79",
+      "from": "VERIFIED",
+      "receipt_hash": "c93426ca4f23733f2b43f7ef2980b8a51504261d472f47060d0bca0ba7121712",
+      "receipt_id": "rcpt-292ffec7bbb52db75b991a45",
+      "to": "ACTIVE",
+      "worker_id": "wk-estate-curator-001"
+    }
+  ],
   "workers": {
     "capability-auditor-001": {
       "capabilities": [
@@ -27,10 +37,28 @@
         "update_registry"
       ],
       "execution_allowed": true,
-      "health": "unverified",
+      "health": "passing",
       "principal_id": "principal:wk-estate-curator-001",
-      "state": "REGISTERED",
-      "successful_distinct_runs": []
+      "state": "ACTIVE",
+      "successful_distinct_runs": [
+        "benchmark-30458473941-1-01-decision",
+        "benchmark-30458473941-1-02-dependency",
+        "benchmark-30458473941-1-03-control",
+        "benchmark-30458473941-1-04-evidence",
+        "benchmark-30458473941-1-05-review",
+        "benchmark-30458473941-1-06-relationship",
+        "benchmark-30458473941-1-07-source",
+        "benchmark-30458473941-1-08-worker",
+        "benchmark-30458473941-1-09-tax",
+        "benchmark-30458473941-1-10-recovery",
+        "github-30458473941-1-source-1",
+        "github-30458473941-1-source-2",
+        "github-30458473941-1-source-3"
+      ],
+      "last_verification": "2026-07-29T13:57:48.112062+00:00",
+      "last_promotion": "2026-07-29T13:57:48.227054+00:00",
+      "receipt_reference": "rcpt-090d99d599cd250f813b2253",
+      "promotion_receipt_reference": "rcpt-292ffec7bbb52db75b991a45"
     }
   }
 }
