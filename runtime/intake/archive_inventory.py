@@ -45,6 +45,13 @@ def main():
     args = ap.parse_args()
     source_dir = Path(args.input_dir)
     root = Path(args.root)
+    prior_receipt = root / "runtime/evidence/archive" / f"{args.run_id}-receipt.json"
+    if prior_receipt.exists():
+        prior = json.loads(prior_receipt.read_text())
+        if prior.get("run_id") != args.run_id or prior.get("status") != "succeeded":
+            raise SystemExit("invalid prior receipt")
+        print(json.dumps(prior, sort_keys=True))
+        return
     archives = sorted(source_dir.glob("*.zip"))
     if not archives:
         raise SystemExit("no ZIP archives found")
