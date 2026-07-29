@@ -6,6 +6,7 @@ import json
 import os
 import re
 import sys
+import tarfile
 import zipfile
 from datetime import datetime, timezone
 from pathlib import Path, PurePosixPath
@@ -52,9 +53,9 @@ def main():
             raise SystemExit("invalid prior receipt")
         print(json.dumps(prior, sort_keys=True))
         return
-    archives = sorted(source_dir.glob("*.zip"))
+    archives = sorted(list(source_dir.glob("*.zip")) + list(source_dir.glob("*.tar.gz")) + list(source_dir.glob("*.tgz")))
     if not archives:
-        raise SystemExit("no ZIP archives found")
+        raise SystemExit("no supported archives found")
 
     members = []
     archive_records = []
@@ -62,39 +63,81 @@ def main():
     for archive in archives:
         with archive.open("rb") as fh:
             archive_sha, archive_bytes = sha256_stream(fh)
-        with zipfile.ZipFile(archive) as zf:
-            archive_member_count = 0
-            for info in zf.infolist():
-                if info.is_dir():
-                    continue
-                if not safe_name(info.filename):
-                    raise SystemExit(f"unsafe archive path: {archive.name}:{info.filename}")
-                if info.flag_bits & 0x1:
-                    raise SystemExit(f"encrypted member unsupported: {archive.name}:{info.filename}")
-                if info.file_size > MAX_MEMBER_BYTES:
-                    raise SystemExit(f"member exceeds size control: {archive.name}:{info.filename}")
-                ratio = info.file_size / max(info.compress_size, 1)
-                if ratio > MAX_RATIO:
-                    raise SystemExit(f"compression ratio exceeds control: {archive.name}:{info.filename}")
-                total_uncompressed += info.file_size
-                if total_uncompressed > MAX_TOTAL_BYTES:
-                    raise SystemExit("aggregate uncompressed size exceeds control")
-                with zf.open(info, "r") as member:
-                    member_sha, actual_bytes = sha256_stream(member)
-                if actual_bytes != info.file_size:
-                    raise SystemExit(f"member byte-count mismatch: {archive.name}:{info.filename}")
-                members.append({
-                    "archive_name": archive.name,
-                    "archive_sha256": archive_sha,
-                    "member_path": info.filename,
-                    "member_bytes": info.file_size,
-                    "compressed_bytes": info.compress_size,
-                    "crc32": f"{info.CRC:08x}",
-                    "member_sha256": member_sha,
-                })
-                archive_member_count += 1
+        archive_member_count = 0
+        archive_type = "zip" if archive.name.lower().endswith(".zip") else "tar.gz"
+        if archive_type == "zip":
+            with zipfile.ZipFile(archive) as zf:
+                for info in zf.infolist():
+                    if info.is_dir():
+                        continue
+                    if not safe_name(info.filename):
+                        raise SystemExit(f"unsafe archive path: {archive.name}:{info.filename}")
+                    if info.flag_bits & 0x1:
+                        raise SystemExit(f"encrypted member unsupported: {archive.name}:{info.filename}")
+                    if info.file_size > MAX_MEMBER_BYTES:
+                        raise SystemExit(f"member exceeds size control: {archive.name}:{info.filename}")
+                    ratio = info.file_size / max(info.compress_size, 1)
+                    if ratio > MAX_RATIO:
+                        raise SystemExit(f"compression ratio exceeds control: {archive.name}:{info.filename}")
+                    total_uncompressed += info.file_size
+                    if total_uncompressed > MAX_TOTAL_BYTES:
+                        raise SystemExit("aggregate uncompressed size exceeds control")
+                    with zf.open(info, "r") as member:
+                        member_sha, actual_bytes = sha256_stream(member)
+                    if actual_bytes != info.file_size:
+                        raise SystemExit(f"member byte-count mismatch: {archive.name}:{info.filename}")
+                    members.append({
+                        "archive_name": archive.name,
+                        "archive_type": archive_type,
+                        "archive_sha256": archive_sha,
+                        "member_path": info.filename,
+                        "member_bytes": info.file_size,
+                        "compressed_bytes": info.compress_size,
+                        "crc32": f"{info.CRC:08x}",
+                        "member_sha256": member_sha,
+                    })
+                    archive_member_count += 1
+        else:
+            archive_uncompressed = 0
+            with tarfile.open(archive, mode="r:gz") as tf:
+                for info in tf:
+                    if info.isdir():
+                        continue
+                    if info.issym() or info.islnk():
+                        raise SystemExit(f"archive link unsupported: {archive.name}:{info.name}")
+                    if not info.isfile():
+                        raise SystemExit(f"archive special member unsupported: {archive.name}:{info.name}")
+                    if not safe_name(info.name):
+                        raise SystemExit(f"unsafe archive path: {archive.name}:{info.name}")
+                    if info.size > MAX_MEMBER_BYTES:
+                        raise SystemExit(f"member exceeds size control: {archive.name}:{info.name}")
+                    archive_uncompressed += info.size
+                    total_uncompressed += info.size
+                    if total_uncompressed > MAX_TOTAL_BYTES:
+                        raise SystemExit("aggregate uncompressed size exceeds control")
+                    member = tf.extractfile(info)
+                    if member is None:
+                        raise SystemExit(f"unable to stream archive member: {archive.name}:{info.name}")
+                    with member:
+                        member_sha, actual_bytes = sha256_stream(member)
+                    if actual_bytes != info.size:
+                        raise SystemExit(f"member byte-count mismatch: {archive.name}:{info.name}")
+                    members.append({
+                        "archive_name": archive.name,
+                        "archive_type": archive_type,
+                        "archive_sha256": archive_sha,
+                        "member_path": info.name,
+                        "member_bytes": info.size,
+                        "compressed_bytes": None,
+                        "crc32": None,
+                        "member_sha256": member_sha,
+                    })
+                    archive_member_count += 1
+            if archive_uncompressed / max(archive_bytes, 1) > MAX_RATIO:
+                raise SystemExit(f"archive compression ratio exceeds control: {archive.name}")
         archive_records.append({
             "archive_name": archive.name,
+            "archive_type": archive_type,
             "archive_bytes": archive_bytes,
             "archive_sha256": archive_sha,
             "member_count": archive_member_count,
