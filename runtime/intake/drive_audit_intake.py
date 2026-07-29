@@ -30,6 +30,12 @@ elif manifest_type == "google_drive_audit_recursive_snapshot":
     unreadable_folder_ids = manifest.get("unreadable_folder_ids", [])
     folders_at_limit = manifest.get("folders_at_connector_limit", [])
     completeness = manifest.get("completeness", "PARTIAL")
+elif manifest_type == "google_drive_audit_exhaustive_metadata_snapshot":
+    entries = manifest.get("files", [])
+    governed_roots = manifest.get("root_folder_ids", [])
+    unreadable_folder_ids = [x.get("id") for x in manifest.get("unreadable_folders", [])]
+    folders_at_limit = manifest.get("folders_at_request_limit", [])
+    completeness = manifest.get("completeness", "PARTIAL")
 else:
     raise SystemExit("unexpected manifest type")
 
