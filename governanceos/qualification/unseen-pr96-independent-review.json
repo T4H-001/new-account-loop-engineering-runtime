@@ -1,0 +1,25 @@
+{
+  "schema_version": 1,
+  "qualification_id": "unseen-pr96-independent-001",
+  "worker_id": "wk-estate-curator-001",
+  "reviewer_principal": "principal:gpt-troy",
+  "review_type": "INDEPENDENT_MODEL_REVIEW",
+  "source_origin": "TML-4PM/runtime-real PR #96 description, not used in worker implementation or known-source benchmark",
+  "source_sha256": "be0feacaa3d12aa10077ea744e9b195976e0c54132b840b3c3658e26a88b8245",
+  "receipt_id": "rcpt-86bfbf017522b02ba7c9d924",
+  "receipt_hash": "9e6efa84f15d9eb0f1f428c5518b53c665870d8d2f0cc21d4a3c5726228a6b33",
+  "objects_sha256": "c2eac1eb813c3bd02f28d5c80e6f33b0ae8d59317d1ba45adea200d81ba54c0e",
+  "relationships_sha256": "e3bcf4a463f589da19e9fa732ce6fe0946949938723fc9ddd2282d689a3823e1",
+  "candidate_objects": 13,
+  "candidate_relationships": 13,
+  "checks": {
+    "source_provenance_preserved": true,
+    "object_relationship_count_equal": true,
+    "promotion_remained_gated": true,
+    "receipt_and_telemetry_linked": true,
+    "classification_spot_check_passed": true
+  },
+  "result": "PASS",
+  "human_review_status": "PENDING",
+  "promotion_effect": "NONE"
+}
