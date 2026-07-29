@@ -1,0 +1,42 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://runtime-real.tech4humanity.net/schemas/canonical-object.schema.json",
+  "title": "Governed Estate Object",
+  "type": "object",
+  "required": [
+    "object_id",
+    "object_type",
+    "title",
+    "text",
+    "lifecycle_state",
+    "owner",
+    "created_by",
+    "source",
+    "evidence_state"
+  ],
+  "properties": {
+    "object_id": {"type": "string", "pattern": "^obj-[a-f0-9]{24}$"},
+    "object_type": {"type": "string"},
+    "title": {"type": "string", "minLength": 1},
+    "text": {"type": "string", "minLength": 1},
+    "lifecycle_state": {
+      "enum": ["CANDIDATE", "REVIEWED", "APPROVED", "CANONICAL", "REJECTED", "ARCHIVED"]
+    },
+    "owner": {"type": "string", "minLength": 1},
+    "created_by": {"type": "string", "minLength": 1},
+    "source": {
+      "type": "object",
+      "required": ["name", "sha256", "line_start", "line_end", "exact_text"],
+      "properties": {
+        "name": {"type": "string"},
+        "sha256": {"type": "string", "pattern": "^[a-f0-9]{64}$"},
+        "line_start": {"type": "integer", "minimum": 1},
+        "line_end": {"type": "integer", "minimum": 1},
+        "exact_text": {"type": "string"}
+      },
+      "additionalProperties": false
+    },
+    "evidence_state": {"enum": ["SOURCE_OCCURRENCE", "INFERRED", "VERIFIED"]}
+  },
+  "additionalProperties": true
+}
