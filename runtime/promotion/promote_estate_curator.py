@@ -33,8 +33,9 @@ if unseen.get("outcome") != "PASS":
 registry_path = root / "runtime/registry/worker_state.json"
 registry = load(registry_path)
 worker = registry["workers"]["wk-estate-curator-001"]
-if worker.get("state") != "VERIFIED":
-    raise SystemExit("worker must be VERIFIED before promotion")
+if worker.get("state") not in {"VERIFIED", "ACTIVE"}:
+    raise SystemExit("worker must be VERIFIED or ACTIVE")
+from_state = worker["state"]
 
 now = datetime.now(timezone.utc).isoformat()
 seed = f"{args.run_id}|{args.approved_by}|{unseen['review_hash']}|{benchmark['passed']}"
@@ -79,12 +80,14 @@ registry.setdefault("ledger", []).append({
     "receipt_hash": promotion["receipt_hash"],
     "approved_by": args.approved_by,
 })
-registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "
+", encoding="utf-8")
 receipt_path = root / "runtime/evidence/promotions" / f"{args.run_id}.json"
 telemetry_path = root / "runtime/evidence/telemetry" / f"{args.run_id}-promotion.json"
 receipt_path.parent.mkdir(parents=True, exist_ok=True)
 telemetry_path.parent.mkdir(parents=True, exist_ok=True)
-receipt_path.write_text(json.dumps(promotion, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+receipt_path.write_text(json.dumps(promotion, indent=2, sort_keys=True) + "
+", encoding="utf-8")
 telemetry = {
     "event_id": event_id,
     "event_type": "estate.curator.promoted.active",
@@ -95,5 +98,6 @@ telemetry = {
     "receipt_hash": promotion["receipt_hash"],
     "state": "ACTIVE",
 }
-telemetry_path.write_text(json.dumps(telemetry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
+telemetry_path.write_text(json.dumps(telemetry, indent=2, sort_keys=True) + "
+", encoding="utf-8")
 print(json.dumps(promotion, sort_keys=True))
