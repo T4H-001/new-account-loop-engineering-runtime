@@ -1,0 +1,40 @@
+{
+  "schema_version": 1,
+  "worker_id": "wk-estate-curator-001",
+  "status": "succeeded",
+  "classification": "REAL",
+  "action": "PROMOTE_WORKER_ACTIVE",
+  "canonical_repository": "T4H001/new-account-loop-engineering-runtime",
+  "source_lineage": {
+    "repository": "TML-4PM/runtime-real",
+    "pull_request": 94,
+    "commit": "223d19edc0a7e2c470e7c9292fc1bf88908af27d"
+  },
+  "qualification": {
+    "run_id": 30458473941,
+    "job_id": 90598080224,
+    "artifact_id": 8726550116,
+    "artifact_digest": "sha256:4979cdf96fe50c58b2ef8be2454a733768486733c557f46473bb142705d449a9",
+    "distinct_sources": 3,
+    "known_benchmark": "10/10 PASS",
+    "unseen_review": "PASS"
+  },
+  "promotion": {
+    "run_id": "promotion-30458473941-1",
+    "receipt_id": "rcpt-292ffec7bbb52db75b991a45",
+    "receipt_hash": "c93426ca4f23733f2b43f7ef2980b8a51504261d472f47060d0bca0ba7121712",
+    "event_id": "evt-d282466718a3a7c9c510de79",
+    "evidence_hash": "ca9cd73471ec3edeb01c9fe5b9ba0a51d41bd53ce0ef54fbf6393c36f2a09b37",
+    "from_state": "VERIFIED",
+    "to_state": "ACTIVE",
+    "approved_by": "T4H001",
+    "observed_at": "2026-07-29T13:57:48.227054+00:00"
+  },
+  "recovery": {
+    "failed_run_id": 30458212131,
+    "cause": "reviewer validated graph envelope length instead of enclosed arrays",
+    "resolution_commit": "457489f7ff271cb8446140f3d7f164bcf426effa",
+    "rerun_id": 30458317547,
+    "result": "success"
+  }
+}
