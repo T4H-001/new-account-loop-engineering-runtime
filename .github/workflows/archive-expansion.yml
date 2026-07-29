@@ -1,0 +1,69 @@
+name: Archive Expansion Qualification
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/archive-expansion.yml"
+      - "runtime/intake/archive_inventory.py"
+      - "tests/test_archive_inventory.py"
+      - "tests/fixtures/build_archive_fixture.py"
+  push:
+    branches: [main]
+    paths:
+      - ".github/workflows/archive-expansion.yml"
+      - "runtime/intake/archive_inventory.py"
+      - "tests/test_archive_inventory.py"
+      - "tests/fixtures/build_archive_fixture.py"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-archive-expansion:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run complete test suite
+        run: python3 -m unittest discover -s tests -v
+      - name: Build bounded archive fixture
+        run: python3 tests/fixtures/build_archive_fixture.py --output runtime/intake/archive-input
+      - name: Execute governed archive worker
+        run: |
+          set -euo pipefail
+          run_id="archive-qualification-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}"
+          python3 runtime/intake/archive_inventory.py \
+            --input-dir runtime/intake/archive-input \
+            --root . \
+            --run-id "${run_id}" \
+            | tee archive-expansion-receipt.json
+          test -s "runtime/evidence/archive/${run_id}-inventory.json"
+          test -s "runtime/evidence/archive/${run_id}-receipt.json"
+          test -s "runtime/evidence/telemetry/${run_id}-archive.json"
+          test -s "runtime/evidence/ledger/${run_id}-archive.json"
+          python3 -c 'import json; r=json.load(open("archive-expansion-receipt.json")); assert r["classification"] == "REAL"; assert r["archive_count"] == 2; assert r["member_count"] == 4; assert r["unique_member_hashes"] == 3; assert r["duplicate_group_count"] == 1; assert r["source_mutation"] == "NONE"; assert r["review_state"] == "PENDING_HUMAN_REVIEW"'
+      - name: Verify receipt linkage
+        run: |
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          receipt = json.loads(Path("archive-expansion-receipt.json").read_text())
+          run_id = receipt["run_id"]
+          telemetry = json.loads(Path(f"runtime/evidence/telemetry/{run_id}-archive.json").read_text())
+          ledger = json.loads(Path(f"runtime/evidence/ledger/{run_id}-archive.json").read_text())
+          assert telemetry["receipt_id"] == receipt["receipt_id"]
+          assert telemetry["receipt_hash"] == receipt["receipt_hash"]
+          assert ledger["receipt_id"] == receipt["receipt_id"]
+          assert ledger["receipt_hash"] == receipt["receipt_hash"]
+          assert ledger["evidence_hash"] == receipt["evidence_hash"]
+          PY
+      - uses: actions/upload-artifact@v4
+        with:
+          name: archive-expansion-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            archive-expansion-receipt.json
+            runtime/evidence/archive/
+            runtime/evidence/telemetry/
+            runtime/evidence/ledger/
