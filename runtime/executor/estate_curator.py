@@ -137,7 +137,8 @@ def run(root: Path, input_path: Path, run_id: str, now: str | None = None) -> di
     if not all(checks.values()):
         raise RuntimeError(f"preflight blocked: {checks}")
 
-    observed_at = now or datetime.now(timezone.utc).isoformat()\n    state_after = "ACTIVE" if worker["state"] == "ACTIVE" else "VERIFIED"
+    observed_at = now or datetime.now(timezone.utc).isoformat()
+    state_after = "ACTIVE" if worker["state"] == "ACTIVE" else "VERIFIED"
     objects, relationships = extract(source_bytes, input_path.name)
     if not objects or len(objects) != len(relationships):
         raise RuntimeError("extraction produced an invalid graph candidate set")
