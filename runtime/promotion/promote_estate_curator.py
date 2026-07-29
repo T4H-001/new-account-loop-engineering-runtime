@@ -80,14 +80,12 @@ registry.setdefault("ledger", []).append({
     "receipt_hash": promotion["receipt_hash"],
     "approved_by": args.approved_by,
 })
-registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "
-", encoding="utf-8")
+registry_path.write_text(json.dumps(registry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 receipt_path = root / "runtime/evidence/promotions" / f"{args.run_id}.json"
 telemetry_path = root / "runtime/evidence/telemetry" / f"{args.run_id}-promotion.json"
 receipt_path.parent.mkdir(parents=True, exist_ok=True)
 telemetry_path.parent.mkdir(parents=True, exist_ok=True)
-receipt_path.write_text(json.dumps(promotion, indent=2, sort_keys=True) + "
-", encoding="utf-8")
+receipt_path.write_text(json.dumps(promotion, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 telemetry = {
     "event_id": event_id,
     "event_type": "estate.curator.promoted.active",
@@ -98,6 +96,5 @@ telemetry = {
     "receipt_hash": promotion["receipt_hash"],
     "state": "ACTIVE",
 }
-telemetry_path.write_text(json.dumps(telemetry, indent=2, sort_keys=True) + "
-", encoding="utf-8")
+telemetry_path.write_text(json.dumps(telemetry, indent=2, sort_keys=True) + "\n", encoding="utf-8")
 print(json.dumps(promotion, sort_keys=True))
