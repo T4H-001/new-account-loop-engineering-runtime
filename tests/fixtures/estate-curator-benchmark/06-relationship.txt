@@ -1,0 +1,6 @@
+# Known Thread 06 — Relationship
+Owner: T4H001
+Object: Audit workbook.
+Relationship: Workbook row derives from bank statement transaction.
+Evidence: Source-line provenance.
+Lifecycle: candidate.
