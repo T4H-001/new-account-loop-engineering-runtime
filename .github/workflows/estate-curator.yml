@@ -1,4 +1,4 @@
-# Qualification lineage: implementation parent 12a6801a69b07f7b3562291ebb5b56a9bdea420b
+# Qualification lineage: TML-4PM/runtime-real PR 94 @ 223d19edc0a7e2c470e7c9292fc1bf88908af27d
 name: Estate Intelligence Curator
 
 on:
@@ -9,8 +9,7 @@ on:
       - "governanceos/**"
       - "runtime/executor/estate_curator.py"
       - "runtime/registry/worker_state.json"
-      - "tests/test_estate_curator.py"
-      - "tests/fixtures/estate-curator-thread.txt"
+      - "tests/**"
       - "workers/estate-intelligence-curator/**"
   push:
     paths:
@@ -18,43 +17,59 @@ on:
       - "governanceos/**"
       - "runtime/executor/estate_curator.py"
       - "runtime/registry/worker_state.json"
-      - "tests/test_estate_curator.py"
-      - "tests/fixtures/estate-curator-thread.txt"
+      - "tests/**"
       - "workers/estate-intelligence-curator/**"
 
 permissions:
   contents: read
 
 jobs:
-  qualify-bounded-worker:
+  qualify-three-distinct-sources:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
       - name: Run complete test suite
         run: python3 -m unittest discover -s tests -v
-      - name: Execute bounded curator
+      - name: Execute three distinct governed sources
         run: |
-          python3 runtime/executor/estate_curator.py \
-            --root . \
-            --input tests/fixtures/estate-curator-thread.txt \
-            --run-id "github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
-            | tee estate-curator-receipt.json
-      - name: Verify governed evidence
+          set -euo pipefail
+          sources=(
+            "tests/fixtures/estate-curator-thread.txt"
+            "tests/fixtures/unseen-thread-pr96.txt"
+            "tests/fixtures/tax-audit-estate-thread.txt"
+          )
+          index=0
+          for source in "${sources[@]}"; do
+            index=$((index + 1))
+            run_id="github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-source-${index}"
+            python3 runtime/executor/estate_curator.py \
+              --root . \
+              --input "${source}" \
+              --run-id "${run_id}" \
+              | tee "estate-curator-receipt-${index}.json"
+          done
+      - name: Verify three receipts, ledgers and telemetry
         run: |
-          python3 -m json.tool estate-curator-receipt.json >/dev/null
-          test -s "runtime/evidence/receipts/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
-          test -s "runtime/evidence/telemetry/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
-          test -s "runtime/graph/runs/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/objects.json"
-          test -s "runtime/graph/runs/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/relationships.json"
-          grep -q '"promotion_state": "PENDING_HUMAN_REVIEW"' estate-curator-receipt.json
+          set -euo pipefail
+          for index in 1 2 3; do
+            run_id="github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}-source-${index}"
+            python3 -m json.tool "estate-curator-receipt-${index}.json" >/dev/null
+            test -s "runtime/evidence/receipts/${run_id}.json"
+            test -s "runtime/evidence/telemetry/${run_id}.json"
+            test -s "runtime/graph/runs/${run_id}/objects.json"
+            test -s "runtime/graph/runs/${run_id}/relationships.json"
+            grep -q '"classification": "REAL"' "estate-curator-receipt-${index}.json"
+            grep -q '"promotion_state": "PENDING_HUMAN_REVIEW"' "estate-curator-receipt-${index}.json"
+          done
           grep -q '"state": "VERIFIED"' runtime/registry/worker_state.json
+          python3 -c 'import json; d=json.load(open("runtime/registry/worker_state.json")); r=d["workers"]["wk-estate-curator-001"]["successful_distinct_runs"]; assert len(r) >= 3, r'
       - uses: actions/upload-artifact@v4
         with:
-          name: estate-curator-${{ github.run_id }}-${{ github.run_attempt }}
+          name: estate-curator-three-source-${{ github.run_id }}-${{ github.run_attempt }}
           if-no-files-found: error
           retention-days: 30
           path: |
-            estate-curator-receipt.json
+            estate-curator-receipt-*.json
             governanceos/review-queue/
             runtime/evidence/receipts/
             runtime/evidence/telemetry/
