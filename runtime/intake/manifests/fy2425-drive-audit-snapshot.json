@@ -1,0 +1,1293 @@
+{
+  "schema_version": 1,
+  "manifest_type": "google_drive_audit_intake_snapshot",
+  "captured_at": "2026-07-30T00:00:00+10:00",
+  "captured_by": "principal:gpt-troy",
+  "accountable_owner": "T4H001",
+  "privacy": "metadata_only_no_document_bytes",
+  "scope": {
+    "financial_year": "FY2024-25",
+    "purpose": "tax audit evidence curation",
+    "direct_child_files": 123,
+    "direct_bytes": 66290942
+  },
+  "folders": [
+    {
+      "id": "1iMBo1Fx0T1wPPZsKmUd44jSAN8yYef0G",
+      "role": "ANZ Bank evidence",
+      "direct_children": [
+        {
+          "id": "1I72LnIpWlnj3Cnkb8yo3Bc7Xsnc8CZJI",
+          "title": "3a77f71b-24bb-434b-8f5c-9549830e94c5.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 254550,
+          "created_time": "2026-01-23T00:03:55.279Z",
+          "modified_time": "2026-01-23T00:03:55.279Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "13l2Qe9m97_OlrHYeR6BLmYbqFJ1IAm97",
+          "title": "77fc7740-78c0-4f12-8bd2-1f55bdf64c5d.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 255231,
+          "created_time": "2026-01-23T00:03:39.756Z",
+          "modified_time": "2026-01-23T00:03:39.757Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1HyimCgsv2l49b9ld587UF24O6HsBCOrR",
+          "title": "fbef3f6a-810a-47a9-a476-a67eef275811.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 318267,
+          "created_time": "2026-01-23T00:03:25.001Z",
+          "modified_time": "2026-01-23T00:03:25.002Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1ERKkXdIlT35MSXglMecLKbtv8z11TmPl",
+          "title": "5c58ff93-19bb-45c7-ba65-48e5b575dbbc.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256105,
+          "created_time": "2026-01-23T00:03:15.124Z",
+          "modified_time": "2026-01-23T00:03:15.124Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1qxzTeyENv615PYIY5qOQJd6xNnh08lL1",
+          "title": "14ee0439-c32d-49b2-a173-f727f44a8b54.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256812,
+          "created_time": "2026-01-23T00:02:19.238Z",
+          "modified_time": "2026-01-23T00:02:19.239Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1jmK65viXukFwy6wNSzgQ5sZCXV9lBRWz",
+          "title": "6d3445d0-f8ab-46b6-865f-695dd33fb54d.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256452,
+          "created_time": "2026-01-23T00:02:12.288Z",
+          "modified_time": "2026-01-23T00:02:12.288Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1KY_4z-uMwydF4kR-W_qUzIA3cMX4sMC_",
+          "title": "d10bfbc4-6246-4fc1-baa0-6409270ef965.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 255903,
+          "created_time": "2026-01-23T00:02:04.643Z",
+          "modified_time": "2026-01-23T00:02:04.644Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "15KLxCGg3xQGQz7NxjFNqobWeONEAs1pi",
+          "title": "b7b8e7c0-b0e6-445a-aa41-2fac8a4e2142.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 255759,
+          "created_time": "2026-01-23T00:01:47.851Z",
+          "modified_time": "2026-01-23T00:01:47.852Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "171_KPlLWZpo6ZYtAOVJnOGDYr1ULe1ND",
+          "title": "a0011d37-0782-4b65-91d2-269eaa0a860e.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 255616,
+          "created_time": "2026-01-23T00:01:33.182Z",
+          "modified_time": "2026-01-23T00:01:33.182Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1-dfimL5FAVUZ54kOtlE8WQciEcExKFVW",
+          "title": "26599f32-c5cf-41a7-ada2-bafacb51ee98.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256068,
+          "created_time": "2026-01-23T00:01:18.569Z",
+          "modified_time": "2026-01-23T00:01:18.570Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1_3pLPy1b4yNd0kS_2xhPat-RXCHanZdg",
+          "title": "f2708b4c-59a1-4c4a-a8f1-0b4f35e10b0c.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256146,
+          "created_time": "2026-01-23T00:00:35.408Z",
+          "modified_time": "2026-01-23T00:00:35.408Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1Q2mDm2oQLfXrase27VQaOpr8ui2eSjxG",
+          "title": "560940a3-caae-4405-82d6-5ea449c397a1.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256558,
+          "created_time": "2026-01-22T23:59:58.514Z",
+          "modified_time": "2026-01-22T23:59:58.515Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "185LEEO56QOeZPSLx4V0RcWoVpfEwWj7B",
+          "title": "bfda9436-aae4-4d3b-891d-e1fe1373f167.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 259497,
+          "created_time": "2026-01-22T23:59:43.754Z",
+          "modified_time": "2026-01-22T23:59:43.755Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "17nA0P4MHh8uChILEjbX9MqFWvHG4OPDX",
+          "title": "bd16ef63-ca4c-48c0-9cc3-3e488de83ed1.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 257198,
+          "created_time": "2026-01-22T23:59:35.965Z",
+          "modified_time": "2026-01-22T23:59:35.966Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "16gJuIvO6_LYT9t_lf1eojw7uLIVrM2BO",
+          "title": "d9f98447-6cc3-4d2b-aca3-bad990dcebf0.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 258457,
+          "created_time": "2026-01-22T23:59:28.766Z",
+          "modified_time": "2026-01-22T23:59:28.767Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1-Me_mfsF3SevPZeHcrxJ_iy0I_aIuUEq",
+          "title": "305e134e-995b-4d99-802e-07b23fcb5a43.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 256542,
+          "created_time": "2026-01-22T23:59:18.627Z",
+          "modified_time": "2026-01-22T23:59:18.628Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "12Bh6LWrF6--WhgZ5Ji7pcchfcVSa5wsp",
+          "title": "f81d2729-a599-4f77-9de3-2c7a331519c1.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 266210,
+          "created_time": "2026-01-22T23:42:01.861Z",
+          "modified_time": "2026-01-22T23:42:01.861Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1IS8dKEu1nWUboI1gCg0VmP3KXFti0LLP",
+          "title": "20e25ad6-9c8d-436e-b8f3-c7b71a837870.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 265180,
+          "created_time": "2026-01-22T23:41:41.539Z",
+          "modified_time": "2026-01-22T23:41:41.539Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1bSPhULletbm2Cc93Cp-NwzMypOn_lT9I",
+          "title": "f0edd727-c3e5-4df2-97b2-493a798a3c1f.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 265713,
+          "created_time": "2026-01-22T23:41:32.723Z",
+          "modified_time": "2026-01-22T23:41:32.723Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "15TAZY_nkpAttpOQASLqNDHNi6_ncKFSC",
+          "title": "22b492e2-118f-4099-a93e-df370cb52a3c.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 268942,
+          "created_time": "2026-01-22T23:41:16.665Z",
+          "modified_time": "2026-01-22T23:41:16.666Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1HlWmZDw77Poyem8bYfCXyQWGKTBpdNzC",
+          "title": "6c605901-17ba-4820-a59b-a88999372852.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 265220,
+          "created_time": "2026-01-22T23:41:08.341Z",
+          "modified_time": "2026-01-22T23:41:08.342Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1BWiuVOrVw9Sou4pO0UNdD5VjXa-kIsU6",
+          "title": "be219aef-d4d7-430e-ae82-716c1d09a26b.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 280916,
+          "created_time": "2026-01-22T23:40:59.832Z",
+          "modified_time": "2026-01-22T23:40:59.832Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "13yIQJw2W2MfykqusNsTrk2s-fJAK1ZV9",
+          "title": "cd0b96ed-acb9-4a2d-ad94-7aac9a3b79dc.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 275273,
+          "created_time": "2026-01-22T23:40:51.518Z",
+          "modified_time": "2026-01-22T23:40:51.519Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1gOfhsUwLCMVxzr3CVHeUduANa8h8pLQe",
+          "title": "4c671f7f-5465-4333-b79c-cf2017abf6d1.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 264788,
+          "created_time": "2026-01-22T23:40:44.691Z",
+          "modified_time": "2026-01-22T23:40:44.691Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1tYIi7KtV6STnpIC8GcEoAqx4VBm0yM_L",
+          "title": "8490575e-85e9-418f-9396-9b84d25c6a82.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 277693,
+          "created_time": "2026-01-22T23:39:52.893Z",
+          "modified_time": "2026-01-22T23:39:52.893Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1atsTJHijcmK6dHA2AD5_WuolUVEof9zd",
+          "title": "228f503c-3f3e-423d-8a6f-53b43a771515.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 259220,
+          "created_time": "2026-01-22T23:38:54.191Z",
+          "modified_time": "2026-01-22T23:38:54.192Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1DzTOZuOmqqdtYAbVd2mSdKK3GX-Bp2h_",
+          "title": "bf7457bd-4be5-4a15-ad9c-06a28c9b766f.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 269131,
+          "created_time": "2026-01-22T23:38:39.584Z",
+          "modified_time": "2026-01-22T23:38:39.585Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1AKBrZPYaYJekfguImn5f4_CqzyfHHjhE",
+          "title": "eebf3b0d-43db-4e9a-af1d-7305e2c6dc5f.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 270640,
+          "created_time": "2026-01-22T23:38:23.980Z",
+          "modified_time": "2026-01-22T23:38:23.981Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1bd6anYD4sYXuHfRyfX9yoAy8l_x_Ra2T",
+          "title": "42b28966-3dbe-463f-af54-6f240dd47ada.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 268922,
+          "created_time": "2026-01-22T23:37:37.674Z",
+          "modified_time": "2026-01-22T23:37:37.675Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1HpItA7_hxxwi47pFDos1uTavccHrTxip",
+          "title": "efc4d645-f9e0-4a3b-867f-1c7d453bb30e.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 254648,
+          "created_time": "2026-01-22T23:36:54.581Z",
+          "modified_time": "2026-01-22T23:36:54.582Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1ArKCMGEnJmKxfdNHacmAvmyeWbhNtjbw",
+          "title": "9f187184-d09f-4e96-915f-17b574e92fcc.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 255423,
+          "created_time": "2026-01-22T23:36:38.687Z",
+          "modified_time": "2026-01-22T23:36:38.687Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1gzhE1cmysaIl2vGwC2iH0AsJKGoQPB_b",
+          "title": "8bd6dbdc-6746-49db-89da-19e1a66df39b.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 254642,
+          "created_time": "2026-01-22T23:36:30.764Z",
+          "modified_time": "2026-01-22T23:36:30.765Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        }
+      ],
+      "direct_child_count": 32,
+      "direct_bytes": 8427722,
+      "listing_limit": 100,
+      "recursive": false
+    },
+    {
+      "id": "1-zAUI8Mu17ue_NxIhcVeg-RznwFXowM0",
+      "role": "Commonwealth Bank evidence",
+      "direct_children": [
+        {
+          "id": "1i7V8xvAetcnVqi5M60G9E2oi25hgHMEf",
+          "title": "D0A6DA38-F4CB-4F26-A435-5B493C8EF78C.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1102341,
+          "created_time": "2026-01-22T23:34:07.000Z",
+          "modified_time": "2026-01-22T23:34:07.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1iJlmtuG1hb9m27mW29I5bd9ob4jsanWQ",
+          "title": "40806B55-7DCA-4E12-9EBA-AE7773C686D3.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 823640,
+          "created_time": "2026-01-22T23:33:53.000Z",
+          "modified_time": "2026-01-22T23:33:53.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1A3uOY4a4LcawV9q0yq9p190CED26p1D2",
+          "title": "52BC7E56-EBC3-4917-B797-D088CB32D901.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1103090,
+          "created_time": "2026-01-22T23:33:29.000Z",
+          "modified_time": "2026-01-22T23:33:29.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "10ezcTJjcyNHUR4axCPF2CXVzeMOUmlqs",
+          "title": "777AE15E-4BB0-4E9E-B488-71BA2DB3A1AA.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1096839,
+          "created_time": "2026-01-22T23:33:18.000Z",
+          "modified_time": "2026-01-22T23:33:18.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1iAYsTzGF7raCtVvb7O_Pb1FKwOnotBxj",
+          "title": "7DD1711A-C701-4426-BD86-AD16FA2BEE5E.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 821009,
+          "created_time": "2026-01-22T23:32:52.000Z",
+          "modified_time": "2026-01-22T23:32:52.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1FvTyxDzOVHNsa8Wo01oJeCMbWjcKZ4ue",
+          "title": "75A872EE-1253-4626-AF0F-DFE436171B56.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 884505,
+          "created_time": "2026-01-22T23:30:59.000Z",
+          "modified_time": "2026-01-22T23:30:59.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1DSZ-2iO_3wyIcbdE6D1xg5spOuL_BPyc",
+          "title": "1D945441-EEFF-4026-8878-92AE330DBC04.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 2253818,
+          "created_time": "2026-01-22T23:30:13.000Z",
+          "modified_time": "2026-01-22T23:30:13.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1SDiXFyDZPaN99_r9rK5_lUEqgxgB5kf_",
+          "title": "9C3A4C81-88E6-4BD8-9BD1-FB96A8A4BCCE.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 466832,
+          "created_time": "2026-01-22T23:29:20.000Z",
+          "modified_time": "2026-01-22T23:29:20.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1IZBu8s4rwuSadUyb2PNzG-i9lcB4-eiW",
+          "title": "A88B5DA2-031C-4415-B676-2F40F38CE077.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 472395,
+          "created_time": "2026-01-22T23:28:22.000Z",
+          "modified_time": "2026-01-22T23:28:22.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1GGXdA2C_md_T8SVFsaUE_MxM7I6P3reZ",
+          "title": "211F5832-D86E-4F35-AE40-BF588865C8A2.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 473860,
+          "created_time": "2026-01-22T23:28:09.000Z",
+          "modified_time": "2026-01-22T23:28:09.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "10LCwEnHhOJeLIHc7JvFg6l0xkzhSqzvl",
+          "title": "060CE7EF-F1DF-4D05-B651-DA0F958C0E2D.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 477552,
+          "created_time": "2026-01-22T23:27:29.000Z",
+          "modified_time": "2026-01-22T23:27:29.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1gLCqVu8tncXTDCkUlkXuZ-RLC4_mw_h7",
+          "title": "C60BD3AE-857A-449E-B292-36B859B09304.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1830688,
+          "created_time": "2026-01-22T23:26:59.000Z",
+          "modified_time": "2026-01-22T23:26:59.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        }
+      ],
+      "direct_child_count": 12,
+      "direct_bytes": 11806569,
+      "listing_limit": 100,
+      "recursive": false
+    },
+    {
+      "id": "1WZsx2NQiJjTxLQ_l0OQSBVsFcGTn_4DY",
+      "role": "Amex Bank evidence",
+      "direct_children": [
+        {
+          "id": "11CVZ4kQZIM_zj0QrzPgnArbOpfG8-ldm",
+          "title": "23_Nov_2025_-_22_Dec_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 251243,
+          "created_time": "2026-01-22T23:50:52.000Z",
+          "modified_time": "2026-01-22T23:50:52.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1LFaG6GrwzIjz3_8sGawufuEQN9cTGmZ4",
+          "title": "23_Oct_2025_-_22_Nov_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252287,
+          "created_time": "2026-01-22T23:50:39.000Z",
+          "modified_time": "2026-01-22T23:50:39.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1sTOkjn3GdHbt18_K6h9T6HP7HNjkEGpv",
+          "title": "23_Aug_2025_-_22_Sep_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252463,
+          "created_time": "2026-01-22T23:50:11.000Z",
+          "modified_time": "2026-01-22T23:50:11.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1Ca10GdbXyG0TF_YY41vTcqdk1j6FjMJf",
+          "title": "23_Jul_2025_-_22_Aug_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252372,
+          "created_time": "2026-01-22T23:49:54.000Z",
+          "modified_time": "2026-01-22T23:49:54.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1w5ycMFFmAoD13ftIj4CsHb2slbc_jIRo",
+          "title": "23_Jun_2025_-_22_Jul_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252620,
+          "created_time": "2026-01-22T23:49:42.000Z",
+          "modified_time": "2026-01-22T23:49:42.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1ArxIXlSwpQrndrrf5mtdedbFMwXoR5X5",
+          "title": "23_May_2025_-_22_Jun_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252214,
+          "created_time": "2026-01-22T23:49:28.000Z",
+          "modified_time": "2026-01-22T23:49:28.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1khd6u_U9u4-AH5XwHohpdQBT_1Ri-Hpf",
+          "title": "23_Mar_2025_-_22_Apr_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 251977,
+          "created_time": "2026-01-22T23:49:00.000Z",
+          "modified_time": "2026-01-22T23:49:00.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "16pE0ZT9T4RsDoLW9592IYFdHhZi1Ny4b",
+          "title": "23_Dec_2024_-_22_Jan_2025.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 251099,
+          "created_time": "2026-01-22T23:48:12.000Z",
+          "modified_time": "2026-01-22T23:48:12.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1FHt6Bh9MF7IEcQFn2ufUl9BqHVnViYs6",
+          "title": "23_Sep_2024_-_22_Oct_2024.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 251723,
+          "created_time": "2026-01-22T23:47:26.000Z",
+          "modified_time": "2026-01-22T23:47:26.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1dcg4K5Q1mtv3NWChdYvblH8NlZTJX0qF",
+          "title": "23_Aug_2024_-_22_Sep_2024.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252436,
+          "created_time": "2026-01-22T23:47:04.000Z",
+          "modified_time": "2026-01-22T23:47:04.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1i2JIWEbkGRxIXUvecEyU4PavMBPYxte8",
+          "title": "23_Jul_2024_-_22_Aug_2024.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 252970,
+          "created_time": "2026-01-22T23:46:49.000Z",
+          "modified_time": "2026-01-22T23:46:49.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "18vyVbUyNYencfdHCJedt0ts0d_XNjiiE",
+          "title": "23_Jun_2024_-_22_Jul_2024.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 195498,
+          "created_time": "2026-01-22T23:46:31.000Z",
+          "modified_time": "2026-01-22T23:46:31.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        }
+      ],
+      "direct_child_count": 12,
+      "direct_bytes": 2968902,
+      "listing_limit": 100,
+      "recursive": false
+    },
+    {
+      "id": "1_nVu8hRtQhmJ5_B8QWSDQt-ocj8VUfH7",
+      "role": "FY24/25 audit evidence root",
+      "direct_children": [
+        {
+          "id": "1iMBo1Fx0T1wPPZsKmUd44jSAN8yYef0G",
+          "title": "ANZ Bank",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-22T23:35:28.567Z",
+          "modified_time": "2026-02-13T11:58:37.015Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1-zAUI8Mu17ue_NxIhcVeg-RznwFXowM0",
+          "title": "Comm Bank",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-22T23:34:37.150Z",
+          "modified_time": "2026-01-31T01:42:41.252Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1WZsx2NQiJjTxLQ_l0OQSBVsFcGTn_4DY",
+          "title": "Amex Bank",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-22T23:51:28.766Z",
+          "modified_time": "2026-01-31T01:41:32.012Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1moLecl50QWhxNHocaLi_CgHZ64KT95wZ",
+          "title": "agent-economy",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-18T17:18:58.107Z",
+          "modified_time": "2026-01-31T01:40:26.945Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1dN8mcGz2APYgMwP4IOr4wGfom5JzXkEu",
+          "title": "02_AUDIT_SCHEMA_DDL (2).sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 9699,
+          "created_time": "2026-01-25T02:12:05.029Z",
+          "modified_time": "2026-01-25T02:12:05.030Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1GnBepBe43XDjqAAae5QSFpdRu7ENFeTQ",
+          "title": "more maat knowledge.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 741965,
+          "created_time": "2026-01-24T01:38:41.931Z",
+          "modified_time": "2026-01-24T01:38:42.549Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "10IDl91-puwCmVKFBs4_FHaOAuL6i9lw-",
+          "title": "MAAT_FULL_PACK_MANIFEST.json",
+          "mime_type": "application/json",
+          "size_bytes": 2447,
+          "created_time": "2026-01-24T00:29:18.917Z",
+          "modified_time": "2026-01-24T00:29:18.917Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "14f7Bc6gn9Gv5XpMiT97gMs-LTirhHiHF",
+          "title": "troy-maat-register-artifact.js",
+          "mime_type": "text/javascript",
+          "size_bytes": 2903,
+          "created_time": "2026-01-23T23:43:15.609Z",
+          "modified_time": "2026-01-23T23:43:15.610Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "19E1RjajQVwWbCHMEutLEg2tsTwzQvwGc",
+          "title": "register_maat_artifact_intent.json",
+          "mime_type": "application/json",
+          "size_bytes": 2395,
+          "created_time": "2026-01-23T23:43:14.103Z",
+          "modified_time": "2026-01-23T23:43:14.103Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1xsoGAs66yxENFgrVcFSm_oDrGgnyxdQA",
+          "title": "maat_governance_migration.sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 4652,
+          "created_time": "2026-01-23T23:43:13.175Z",
+          "modified_time": "2026-01-23T23:43:13.175Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1UQrKxLpXXuG08i8ijX87iog28wu1n4a1",
+          "title": "MAAT_BRIDGE_WIRING_INSTRUCTIONS.md",
+          "mime_type": "text/markdown",
+          "size_bytes": 3103,
+          "created_time": "2026-01-23T23:43:11.628Z",
+          "modified_time": "2026-01-23T23:43:11.628Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1nHMhG1CJ1je7SQpGAollyBi6CdM_1D5y",
+          "title": "MAAT copy",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-23T21:39:29.861Z",
+          "modified_time": "2026-01-23T21:48:55.189Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1opm4fwU62kgsJX8jiyuoaMmuFqmN_j8r",
+          "title": "maat (1).pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 618557,
+          "created_time": "2026-01-23T21:34:21.907Z",
+          "modified_time": "2026-01-23T21:34:22.420Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1Bcs_KOo89ipmuk3q0872stvB5uGYBmqy",
+          "title": "Evidence_Packs_BASELINE_V1 2",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-23T01:31:04.311Z",
+          "modified_time": "2026-01-23T18:20:48.213Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1WZ8PNcfPanmVhws8dJ_H8lcvuTM3dSPw",
+          "title": "SESSION_COMPLETION_STATUS.md",
+          "mime_type": "text/markdown",
+          "size_bytes": 2164,
+          "created_time": "2026-01-23T14:45:44.261Z",
+          "modified_time": "2026-01-23T14:45:44.261Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1JcG4KJNA0naUckz7RryK5V83ISdd6Ktu",
+          "title": "BAS_Summary_FY25.md",
+          "mime_type": "text/markdown",
+          "size_bytes": 2042,
+          "created_time": "2026-01-23T14:45:32.183Z",
+          "modified_time": "2026-01-23T14:45:32.184Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1hCTKiLfnIa-o4yLlgb8wuS19gF2oVD5h",
+          "title": "maat_import.sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 38451,
+          "created_time": "2026-01-23T14:31:47.655Z",
+          "modified_time": "2026-01-23T14:31:47.666Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1hkLhY-71YgVa72TqX-iI85N-Jwll07gl",
+          "title": "maat-lambda-full",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-18T20:39:02.601Z",
+          "modified_time": "2026-01-23T12:35:08.124Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "12_yl11Sv7_iVGPXHDZgfH7hglQnNNvOW",
+          "title": "MAAT_content_last24h.txt",
+          "mime_type": "text/plain",
+          "size_bytes": 585,
+          "created_time": "2026-01-23T12:34:51.143Z",
+          "modified_time": "2026-01-23T12:34:51.848Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "12eOXgfst19uBSGL9kCG0s-qB7kW9p8k7",
+          "title": "BAS_Automation_Pack.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 21273,
+          "created_time": "2026-01-23T11:53:54.278Z",
+          "modified_time": "2026-01-23T11:53:54.279Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "16nFQT1d0Sjm41uX5mqEB2jMcQIZxyjLK",
+          "title": "MAAT_Technical_Narrative_Updates.sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 27791,
+          "created_time": "2026-01-23T10:27:55.988Z",
+          "modified_time": "2026-01-23T10:27:55.989Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1dPD7KVeGrbeJIO1xAVqKiYEotVdBPwKX",
+          "title": "MAAT_RD_Cost_Update.sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 9490,
+          "created_time": "2026-01-23T10:16:40.161Z",
+          "modified_time": "2026-01-23T10:16:40.161Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1mIN_S_SrAH32N6CCRomQHK7z0fd9pU54",
+          "title": "MASTER_INTENT_REGISTRY_FULL_SCALE.json",
+          "mime_type": "application/json",
+          "size_bytes": 25570,
+          "created_time": "2026-01-23T06:33:30.105Z",
+          "modified_time": "2026-01-23T06:33:30.105Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1FLENRDTKTv9_HDV76Ml2z9mBkdzJxV2v",
+          "title": "DEPLOY_NOW.sql",
+          "mime_type": "text/x-sql",
+          "size_bytes": 6571,
+          "created_time": "2026-01-23T06:10:18.615Z",
+          "modified_time": "2026-01-23T06:10:18.615Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1BJRSgHk85sjGztBDylFG3zTqId05-M6i",
+          "title": "intent_registry (1).json",
+          "mime_type": "application/json",
+          "size_bytes": 5531,
+          "created_time": "2026-01-23T05:53:56.595Z",
+          "modified_time": "2026-01-23T05:53:56.596Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1ijwtZX3-HdAZ5C9XDW1cSbJrwolYdJlM",
+          "title": "MAAT_Money_Complete.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 12627,
+          "created_time": "2026-01-23T04:25:15.320Z",
+          "modified_time": "2026-01-23T04:25:15.320Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "11EkcXKezNhDvnEs68zIKKiVH7qWcJ9fi",
+          "title": "History.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 1108947,
+          "created_time": "2026-01-23T03:30:07.320Z",
+          "modified_time": "2026-01-23T03:30:08.189Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1-t61ME4DNdmg5dUTxj1UZDhqk2-lDvbE",
+          "title": "Tech4Humanity_Accountant_Handoff_Pack_v2.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 131062,
+          "created_time": "2026-01-23T03:23:18.762Z",
+          "modified_time": "2026-01-23T03:23:18.762Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1FQRKrLr1heG5S0oBoKx6TwxBOEhN157I",
+          "title": "accountant_pack",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-23T03:17:03.000Z",
+          "modified_time": "2026-01-23T03:17:03.000Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1IadbQ-SkGjgWRJCiVae-zn-CL2N2Ccah",
+          "title": "R03_maat_bank_import.mjs",
+          "mime_type": "text/javascript",
+          "size_bytes": 3269,
+          "created_time": "2026-01-23T03:16:40.000Z",
+          "modified_time": "2026-01-23T03:16:40.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1NMpcXvsCK-uNeahs1GEdqOD90gXQJuI1",
+          "title": "R03_maat_tax_compute.mjs",
+          "mime_type": "text/javascript",
+          "size_bytes": 8436,
+          "created_time": "2026-01-23T03:16:40.000Z",
+          "modified_time": "2026-01-23T03:16:40.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1AyjPnqkTdfa-QH2IneUbbdyyDPqxEE4G",
+          "title": "rd_tax_incentive_for_tech_for_humanity_gemini.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 95836,
+          "created_time": "2026-01-23T02:51:54.115Z",
+          "modified_time": "2026-01-23T02:51:54.115Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "184WnIJcCnQrUZNe-IbTL5n-QkrrvqShY",
+          "title": "rd_tax_incentive_for_tech_for_humanity_gemini (1).md",
+          "mime_type": "text/markdown",
+          "size_bytes": 26865,
+          "created_time": "2026-01-23T02:51:52.917Z",
+          "modified_time": "2026-01-23T02:51:52.918Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1D402FkX05u4IUb8t8Wd8lpK4zi4QGgbj",
+          "title": "maat_money_from_concept_to_code_gemini.docx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size_bytes": 15841,
+          "created_time": "2026-01-23T02:51:42.650Z",
+          "modified_time": "2026-01-23T02:51:42.650Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1j1-NmayeXe71riMLUru3KXYvVegtzuXV",
+          "title": "maat_money_from_concept_to_code_gemini.json",
+          "mime_type": "application/json",
+          "size_bytes": 21637,
+          "created_time": "2026-01-23T02:51:41.432Z",
+          "modified_time": "2026-01-23T02:51:41.432Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1RN0Sq_g7JXZHzZbXAO10gq5fPHtqXrkJ",
+          "title": "audit_report_output.json",
+          "mime_type": "application/json",
+          "size_bytes": 11922,
+          "created_time": "2026-01-23T02:49:28.901Z",
+          "modified_time": "2026-01-23T02:49:28.901Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1EZ5OFUqydNsRGu8K6Jn7AO6yKDPD4Myd",
+          "title": "full_audit_output.json",
+          "mime_type": "application/json",
+          "size_bytes": 16876,
+          "created_time": "2026-01-23T02:49:27.430Z",
+          "modified_time": "2026-01-23T02:49:27.430Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1a4IDVK6_g0ePd92ezy-2_dIf06qbZJOw",
+          "title": "fix-iam.sh",
+          "mime_type": "text/x-sh",
+          "size_bytes": 1402,
+          "created_time": "2026-01-23T02:48:04.361Z",
+          "modified_time": "2026-01-23T02:48:04.362Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "145OzhHQVjPXIbg-Wg8yLQa8SpFHEZj7A",
+          "title": "audit_pack_01_mcp.json",
+          "mime_type": "application/json",
+          "size_bytes": 12802,
+          "created_time": "2026-01-23T01:49:50.602Z",
+          "modified_time": "2026-01-23T01:49:50.608Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "10UQMpHrf58jIabeTzOz75tKx4gCeYzKn",
+          "title": "Deliverables - Baseline 2",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-23T01:31:03.184Z",
+          "modified_time": "2026-01-23T01:31:03.189Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "17qjAxedztkyvzCvq6Iml46dRripGiUoF",
+          "title": "deploy-bootstrap.sh",
+          "mime_type": "text/x-sh",
+          "size_bytes": 1323,
+          "created_time": "2026-01-23T01:20:24.710Z",
+          "modified_time": "2026-01-23T01:20:24.710Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1aZ4ElU1I58Yo9ntddpI8eDQTyHYiSj0i",
+          "title": "troy-infra-bootstrap.yaml",
+          "mime_type": "application/octet-stream",
+          "size_bytes": 17182,
+          "created_time": "2026-01-23T01:20:22.330Z",
+          "modified_time": "2026-01-23T01:20:22.331Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1rFqf7qDyKGDsqbNEeOoYQ3pncunP3pof",
+          "title": "activity.csv",
+          "mime_type": "text/csv",
+          "size_bytes": 1395,
+          "created_time": "2026-01-23T00:17:28.945Z",
+          "modified_time": "2026-01-23T00:17:28.945Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1Fq-tXj-dHf92-QB-Z7-7Qr5SoHpZ7MHK",
+          "title": "Amex Bank.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 5486692,
+          "created_time": "2026-01-23T00:10:57.423Z",
+          "modified_time": "2026-01-23T00:10:57.567Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1P50ZvEob90qIlBy8DEn5YCfibq0J56_u",
+          "title": "Comm Bank.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 28077185,
+          "created_time": "2026-01-23T00:10:52.965Z",
+          "modified_time": "2026-01-23T00:10:53.534Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1_m8KxzuFdb6-lo7thwjtzTJoGerXxaX6",
+          "title": "property-decision-pack-web",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-20T12:29:34.626Z",
+          "modified_time": "2026-01-22T10:59:10.382Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1YZRWoMQr4K8NtEjjQOKLFSKk2d7eshy4",
+          "title": ":Downloads:maat-basiq-sync:index.mj.txt",
+          "mime_type": "text/plain",
+          "size_bytes": 0,
+          "created_time": "2026-01-18T21:31:11.456Z",
+          "modified_time": "2026-01-18T21:31:16.339Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1QpopSmZuDs5fJs6sORfD0CTXowa90Fnm",
+          "title": "maat-basiq-sync.js",
+          "mime_type": "text/javascript",
+          "size_bytes": 3258,
+          "created_time": "2026-01-18T21:30:22.242Z",
+          "modified_time": "2026-01-18T21:30:25.094Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1EKl3r9MdpvnLy9I1_b8IulFWLDx0_WIk",
+          "title": "Pack ready for accountant review.",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-18T21:02:25.424Z",
+          "modified_time": "2026-01-18T21:02:25.441Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "17wjCq_iGPsn9do1K3r3Rm7SSw51uyxHF",
+          "title": "maat-bank-import.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 1324,
+          "created_time": "2026-01-18T20:39:08.636Z",
+          "modified_time": "2026-01-18T20:39:08.636Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1nxlFiNU_lPPlq8zAaqCtHU3999HwL5Dd",
+          "title": "maat-lambda-full.zip",
+          "mime_type": "application/zip",
+          "size_bytes": 8021,
+          "created_time": "2026-01-18T20:39:02.076Z",
+          "modified_time": "2026-01-18T20:39:02.076Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1QfadABVFvX-bCFoaz8QYh-erFcOlgYp4",
+          "title": "Deliverables - Baseline",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-18T20:31:49.457Z",
+          "modified_time": "2026-01-18T20:31:49.462Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1VyswaxSJXOx56nMbHqqN0z8qOLKRGaPp",
+          "title": "Evidence_Packs_BASELINE_V1",
+          "mime_type": "application/vnd.google-apps.folder",
+          "size_bytes": null,
+          "created_time": "2026-01-18T20:27:34.707Z",
+          "modified_time": "2026-01-18T20:27:34.713Z",
+          "file_or_folder": "folder",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1KTjmF5p7PkFwY3OvZbEa_MiFCsMSNVS4",
+          "title": "Tech4Humanity_Cost_Surface_Canonical_FY2425 (3).xlsx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 41938,
+          "created_time": "2026-01-18T19:03:54.055Z",
+          "modified_time": "2026-01-18T19:03:54.062Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "10MH23_bKXWryCdS1nP2QuizIx3BUEsIl",
+          "title": "__Dispute & Contestability Pack  - tax.pdf",
+          "mime_type": "application/pdf",
+          "size_bytes": 115409,
+          "created_time": "2026-01-18T19:03:42.113Z",
+          "modified_time": "2026-01-18T19:03:42.132Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1JkhD0rU2QHAoUg39CJT2-qRLVzkKRxEx",
+          "title": "Tech4Humanity_Cost_Surface_FRAMEWORK_FY2425.xlsx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 58075,
+          "created_time": "2026-01-18T19:02:41.237Z",
+          "modified_time": "2026-01-18T19:02:41.238Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1DcMIay0zd76A7qn0bG5sZEL_5snIHDRU",
+          "title": "Tech4Humanity_Cost_Surface_FY2425.xlsx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 32153,
+          "created_time": "2026-01-18T18:27:41.315Z",
+          "modified_time": "2026-01-18T18:27:41.315Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1gxjAK1ssxMxRF9wSTVJOUn-sqmwxxKzo",
+          "title": "troy_credentials_approved (1).md",
+          "mime_type": "text/markdown",
+          "size_bytes": 1229,
+          "created_time": "2026-01-18T18:15:05.772Z",
+          "modified_time": "2026-01-18T18:15:05.773Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1gObhZCNiJczOvoKmS1nPwqrWtpQFpurp",
+          "title": "Complete_RnD_Cost_Breakdown_FY2024-25.csv",
+          "mime_type": "text/csv",
+          "size_bytes": 3570,
+          "created_time": "2026-01-18T18:13:38.879Z",
+          "modified_time": "2026-01-18T18:13:38.880Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1PFCo9xk9Z2LZ4_pafSH4hKnvcJRezNI9",
+          "title": "Tech4Humanity_RD_Expenditure_Mapping_FY2425.xlsx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet",
+          "size_bytes": 19167,
+          "created_time": "2026-01-18T18:07:15.721Z",
+          "modified_time": "2026-01-18T18:07:15.722Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1j0flgomCbsM0gC6cj5ne6hVUHUukuDqo",
+          "title": "Tech4Humanity_RD_Tax_Submission_Checklist (1).docx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size_bytes": 11892,
+          "created_time": "2026-01-18T17:36:32.543Z",
+          "modified_time": "2026-01-18T17:36:32.544Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1ltZJspE9ygkFPheeioAWR11WrD_ap9HP",
+          "title": "Tech4Humanity_RD_Tax_Register_IP_FY2425 (1).docx",
+          "mime_type": "application/vnd.openxmlformats-officedocument.wordprocessingml.document",
+          "size_bytes": 11385,
+          "created_time": "2026-01-18T17:36:31.640Z",
+          "modified_time": "2026-01-18T17:36:31.640Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1Mg1GWcTdd7xrlufuJv7GI4W564UN6z-c",
+          "title": "template.yaml",
+          "mime_type": "application/octet-stream",
+          "size_bytes": 5314,
+          "created_time": "2026-01-18T08:25:30.045Z",
+          "modified_time": "2026-01-18T08:25:30.045Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1jfLsTkVkvxHFEzSSbQ0NzbPsMhilEeb5",
+          "title": "displayvideo.v3.json",
+          "mime_type": "application/json",
+          "size_bytes": 1149388,
+          "created_time": "2025-11-24T04:03:51.642Z",
+          "modified_time": "2025-11-24T04:03:51.643Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1PMdCz3Z5HblshJC39HFs1XYBEtky1Tkx",
+          "title": "displayvideo.v2.json",
+          "mime_type": "application/json",
+          "size_bytes": 1133923,
+          "created_time": "2025-11-24T04:03:51.641Z",
+          "modified_time": "2025-11-24T04:03:51.642Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1N6iNMwStNjquumJrHSi5UXpdXvfAwgvt",
+          "title": "displayvideo.v1.json",
+          "mime_type": "application/json",
+          "size_bytes": 980827,
+          "created_time": "2025-11-24T04:03:51.640Z",
+          "modified_time": "2025-11-24T04:03:51.641Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        },
+        {
+          "id": "1HOeZQjULXvoClH8IPg4WhFGQ_x_3i2dT",
+          "title": "Connections.csv",
+          "mime_type": "text/csv",
+          "size_bytes": 2934388,
+          "created_time": "2025-08-15T19:58:26.000Z",
+          "modified_time": "2025-08-15T19:58:26.000Z",
+          "file_or_folder": "file",
+          "source_visibility_status": "access_not_verified"
+        }
+      ],
+      "direct_child_count": 67,
+      "direct_bytes": 43087749,
+      "listing_limit": 100,
+      "recursive": false
+    }
+  ],
+  "controls": {
+    "source_identity": "google_drive_file_id",
+    "content_hash_status": "PENDING_RAW_BYTE_INGEST",
+    "classification_default": "PENDING_REVIEW",
+    "legal_tax_determination": "HUMAN_ONLY",
+    "partial_listing_rule": "Folders with more than 100 direct children require pagination before completeness can be claimed"
+  }
+}
