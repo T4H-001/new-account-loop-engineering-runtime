@@ -41,7 +41,7 @@ jobs:
           test -s "runtime/evidence/archive/${run_id}-receipt.json"
           test -s "runtime/evidence/telemetry/${run_id}-archive.json"
           test -s "runtime/evidence/ledger/${run_id}-archive.json"
-          python3 -c 'import json; r=json.load(open("archive-expansion-receipt.json")); assert r["classification"] == "REAL"; assert r["archive_count"] == 2; assert r["member_count"] == 4; assert r["unique_member_hashes"] == 3; assert r["duplicate_group_count"] == 1; assert r["source_mutation"] == "NONE"; assert r["review_state"] == "PENDING_HUMAN_REVIEW"'
+          python3 -c 'import json; r=json.load(open("archive-expansion-receipt.json")); assert r["classification"] == "REAL"; assert r["archive_count"] == 3; assert r["member_count"] == 5; assert r["unique_member_hashes"] == 4; assert r["duplicate_group_count"] == 1; assert r["source_mutation"] == "NONE"; assert r["review_state"] == "PENDING_HUMAN_REVIEW"'
       - name: Verify receipt linkage
         run: |
           python3 - <<'PY'
