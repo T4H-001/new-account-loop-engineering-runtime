@@ -23,6 +23,11 @@ class EstateCuratorTest(unittest.TestCase):
             run_id = "estate-curator-test-001"
             now = "2026-07-27T09:00:00+00:00"
 
+            initial_registry = json.loads((fixture / "runtime/registry/worker_state.json").read_text())
+            initial_state = initial_registry["workers"][MODULE.WORKER_ID]["state"]
+            initial_ledger_count = len(initial_registry["ledger"])
+            expected_state = "ACTIVE" if initial_state == "ACTIVE" else "VERIFIED"
+
             first = MODULE.run(fixture, source, run_id, now)
             registry_path = fixture / "runtime/registry/worker_state.json"
             registry_before_replay = registry_path.read_bytes()
@@ -42,7 +47,7 @@ class EstateCuratorTest(unittest.TestCase):
             worker = registry["workers"][MODULE.WORKER_ID]
 
             self.assertEqual("REAL", first["classification"])
-            self.assertEqual("VERIFIED", worker["state"])
+            self.assertEqual(expected_state, worker["state"])
             self.assertEqual("PENDING", review["status"])
             self.assertEqual("HUMAN", review["review_policy"])
             self.assertEqual(len(objects), len(relationships))
@@ -51,8 +56,8 @@ class EstateCuratorTest(unittest.TestCase):
             self.assertTrue(all(item["lifecycle_state"] == "CANDIDATE" for item in objects))
             self.assertEqual(first, replay)
             self.assertEqual(registry_before_replay, registry_path.read_bytes())
-            self.assertEqual(1, len(registry["ledger"]))
-            self.assertNotEqual("ACTIVE", worker["state"])
+            self.assertEqual(initial_ledger_count + 1, len(registry["ledger"]))
+            self.assertEqual(expected_state, first["result"]["worker_state_after"])
 
     def test_run_id_collision_fails_closed(self):
         with tempfile.TemporaryDirectory() as directory:

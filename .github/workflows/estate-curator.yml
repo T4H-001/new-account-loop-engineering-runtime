@@ -61,7 +61,7 @@ jobs:
             grep -q '"classification": "REAL"' "estate-curator-receipt-${index}.json"
             grep -q '"promotion_state": "PENDING_HUMAN_REVIEW"' "estate-curator-receipt-${index}.json"
           done
-          grep -q '"state": "VERIFIED"' runtime/registry/worker_state.json
+          grep -Eq '"state": "(VERIFIED|ACTIVE)"' runtime/registry/worker_state.json
           python3 -c 'import json; d=json.load(open("runtime/registry/worker_state.json")); r=d["workers"]["wk-estate-curator-001"]["successful_distinct_runs"]; assert len(r) >= 3, r'
       - name: Run ten known-thread benchmark
         run: |

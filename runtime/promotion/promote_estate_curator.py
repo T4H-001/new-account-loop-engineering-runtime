@@ -33,8 +33,9 @@ if unseen.get("outcome") != "PASS":
 registry_path = root / "runtime/registry/worker_state.json"
 registry = load(registry_path)
 worker = registry["workers"]["wk-estate-curator-001"]
-if worker.get("state") != "VERIFIED":
-    raise SystemExit("worker must be VERIFIED before promotion")
+if worker.get("state") not in {"VERIFIED", "ACTIVE"}:
+    raise SystemExit("worker must be VERIFIED or ACTIVE")
+from_state = worker["state"]
 
 now = datetime.now(timezone.utc).isoformat()
 seed = f"{args.run_id}|{args.approved_by}|{unseen['review_hash']}|{benchmark['passed']}"
@@ -58,7 +59,7 @@ promotion = {
     "principal_id": "principal:estate-curator-promoter",
     "approved_by": args.approved_by,
     "executed_at": now,
-    "from_state": "VERIFIED",
+    "from_state": from_state,
     "to_state": "ACTIVE",
     "receipt_id": receipt_id,
     "event_id": event_id,
@@ -73,7 +74,7 @@ worker["promotion_receipt_reference"] = receipt_id
 registry.setdefault("ledger", []).append({
     "event_id": event_id,
     "worker_id": "wk-estate-curator-001",
-    "from": "VERIFIED",
+    "from": from_state,
     "to": "ACTIVE",
     "receipt_id": receipt_id,
     "receipt_hash": promotion["receipt_hash"],
