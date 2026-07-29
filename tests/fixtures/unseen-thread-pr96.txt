@@ -1,0 +1,20 @@
+# Obsidian and LM Studio Mac acceptance
+
+## Objective
+
+Add one Mac-bridge acceptance runner for actual Obsidian and LM Studio proofs.
+
+## Required controls
+
+* The Obsidian vault boundary must contain `.obsidian`.
+* The note write must be collision-safe.
+* Readback and lossless export must produce matching SHA-256 evidence.
+* LM Studio model inventory must use its OpenAI-compatible local API.
+* One bounded deterministic inference must record model identity, latency, response hashes and token usage.
+* Receipt, telemetry and ledger records must remain linked.
+* Missing vault or API evidence must block promotion.
+
+## Remaining gate
+
+The authenticated Mac bridge is not yet available to this worker.
+The next action is to execute the acceptance command through that bridge.
