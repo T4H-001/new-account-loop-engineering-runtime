@@ -1,0 +1,62 @@
+# Qualification lineage: implementation parent 12a6801a69b07f7b3562291ebb5b56a9bdea420b
+name: Estate Intelligence Curator
+
+on:
+  workflow_dispatch:
+  pull_request:
+    paths:
+      - ".github/workflows/estate-curator.yml"
+      - "governanceos/**"
+      - "runtime/executor/estate_curator.py"
+      - "runtime/registry/worker_state.json"
+      - "tests/test_estate_curator.py"
+      - "tests/fixtures/estate-curator-thread.txt"
+      - "workers/estate-intelligence-curator/**"
+  push:
+    paths:
+      - ".github/workflows/estate-curator.yml"
+      - "governanceos/**"
+      - "runtime/executor/estate_curator.py"
+      - "runtime/registry/worker_state.json"
+      - "tests/test_estate_curator.py"
+      - "tests/fixtures/estate-curator-thread.txt"
+      - "workers/estate-intelligence-curator/**"
+
+permissions:
+  contents: read
+
+jobs:
+  qualify-bounded-worker:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Run complete test suite
+        run: python3 -m unittest discover -s tests -v
+      - name: Execute bounded curator
+        run: |
+          python3 runtime/executor/estate_curator.py \
+            --root . \
+            --input tests/fixtures/estate-curator-thread.txt \
+            --run-id "github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}" \
+            | tee estate-curator-receipt.json
+      - name: Verify governed evidence
+        run: |
+          python3 -m json.tool estate-curator-receipt.json >/dev/null
+          test -s "runtime/evidence/receipts/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
+          test -s "runtime/evidence/telemetry/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}.json"
+          test -s "runtime/graph/runs/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/objects.json"
+          test -s "runtime/graph/runs/github-${GITHUB_RUN_ID}-${GITHUB_RUN_ATTEMPT}/relationships.json"
+          grep -q '"promotion_state": "PENDING_HUMAN_REVIEW"' estate-curator-receipt.json
+          grep -q '"state": "VERIFIED"' runtime/registry/worker_state.json
+      - uses: actions/upload-artifact@v4
+        with:
+          name: estate-curator-${{ github.run_id }}-${{ github.run_attempt }}
+          if-no-files-found: error
+          retention-days: 30
+          path: |
+            estate-curator-receipt.json
+            governanceos/review-queue/
+            runtime/evidence/receipts/
+            runtime/evidence/telemetry/
+            runtime/graph/runs/
+            runtime/registry/worker_state.json
