@@ -1,0 +1,20 @@
+{
+  "status": "REAL",
+  "timestamp": "2026-08-01T10:56:35.261Z",
+  "repository": "T4H001/new-account-loop-engineering-runtime",
+  "workflow": "Runtime Receipt Proof",
+  "run_id": "30696693351",
+  "commit_sha": "4947d9dc8dc1b9ecf6f94ad8d05844fc404452dd",
+  "duration_seconds": null,
+  "evidence": {
+    "runner": true,
+    "checkout": true,
+    "receipt_written": true,
+    "artifact_uploaded": true,
+    "validation_passed": true
+  },
+  "classification": "REAL",
+  "gaps": [],
+  "recovery_action": "rerun workflow_dispatch if receipt or artifact is missing",
+  "next_action": "append to ledger and schedule survivability replay"
+}
