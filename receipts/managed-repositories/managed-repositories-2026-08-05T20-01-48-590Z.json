@@ -1,0 +1,38 @@
+{
+  "timestamp": "2026-08-05T20:01:48.590Z",
+  "workflow": "Managed Repository Audit",
+  "run_id": "31042140282",
+  "commit_sha": "7bf38ca07f95b6dce8446a25b64da62826fb0f0e",
+  "runtime_repository": "T4H001/new-account-loop-engineering-runtime",
+  "managed_repository_count": 2,
+  "results": [
+    {
+      "repository": "TML-4PM/the-pen",
+      "runtime": "T4H001/new-account-loop-engineering-runtime",
+      "status": "CONNECTED",
+      "native_actions": "BLOCKED_BILLING",
+      "execution_model": "EXTERNAL_RUNTIME",
+      "checked_at": "2026-08-05T20:01:48.590Z",
+      "clone": false,
+      "files_listed": false,
+      "classification": "BLOCKED",
+      "gaps": [
+        "Command failed: git clone --depth 1 https://github.com/TML-4PM/the-pen.git tmp/TML-4PM__the-pen\nCloning into 'tmp/TML-4PM__the-pen'...\nfatal: could not read Username for 'https://github.com': No such device or address\n"
+      ]
+    },
+    {
+      "repository": "TML-4PM/mcp-command-centre",
+      "runtime": "T4H001/new-account-loop-engineering-runtime",
+      "status": "CONNECTED",
+      "native_actions": "BLOCKED_BILLING",
+      "execution_model": "EXTERNAL_RUNTIME",
+      "checked_at": "2026-08-05T20:01:48.590Z",
+      "clone": false,
+      "files_listed": false,
+      "classification": "BLOCKED",
+      "gaps": [
+        "Command failed: git clone --depth 1 https://github.com/TML-4PM/mcp-command-centre.git tmp/TML-4PM__mcp-command-centre\nCloning into 'tmp/TML-4PM__mcp-command-centre'...\nfatal: could not read Username for 'https://github.com': No such device or address\n"
+      ]
+    }
+  ]
+}
