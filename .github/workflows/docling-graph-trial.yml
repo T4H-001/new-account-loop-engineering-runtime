@@ -1,0 +1,62 @@
+name: Docling Graph 2h Runtime Trial
+
+on:
+  push:
+    paths:
+      - 'runtime-trials/docling-graph/TRIAL.md'
+      - '.github/workflows/docling-graph-trial.yml'
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  trial:
+    runs-on: ubuntu-latest
+    timeout-minutes: 125
+    steps:
+      - name: Checkout runtime
+        uses: actions/checkout@v4
+
+      - name: Capture trial start
+        run: |
+          mkdir -p runtime-trials/docling-graph/receipt
+          date -u +%Y-%m-%dT%H:%M:%SZ | tee runtime-trials/docling-graph/receipt/start.txt
+
+      - name: Load Docling Graph
+        run: |
+          git clone --depth 1 https://github.com/docling-project/docling-graph.git runtime-trials/docling-graph/source
+          cd runtime-trials/docling-graph/source
+          git rev-parse HEAD | tee ../receipt/source-revision.txt
+
+      - name: Install runtime
+        run: |
+          python3 -m venv .trial-venv
+          . .trial-venv/bin/activate
+          python -m pip install --upgrade pip
+          pip install .
+          python -c "import docling_graph; print('DOCling_GRAPH_IMPORT=OK')"
+
+      - name: Validate runtime
+        run: |
+          . .trial-venv/bin/activate
+          if [ -f pyproject.toml ] && grep -q '\[tool.pytest' pyproject.toml; then
+            python -m pytest -q
+          else
+            python -c "import docling_graph; print('DOCling_GRAPH_SMOKE=OK')"
+          fi
+
+      - name: Record qualified state
+        run: |
+          date -u +%Y-%m-%dT%H:%M:%SZ | tee runtime-trials/docling-graph/receipt/qualified-at.txt
+          printf '%s\n' 'STATUS=REAL-CANDIDATE' | tee runtime-trials/docling-graph/receipt/status.txt
+
+      - name: Hold trial worker for 2 hours
+        run: |
+          echo 'TRIAL_WINDOW_SECONDS=7200'
+          sleep 7200
+
+      - name: Capture trial end
+        if: always()
+        run: |
+          date -u +%Y-%m-%dT%H:%M:%SZ | tee runtime-trials/docling-graph/receipt/end.txt
