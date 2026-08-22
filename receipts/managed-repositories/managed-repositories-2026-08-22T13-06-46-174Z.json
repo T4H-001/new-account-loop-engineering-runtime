@@ -1,0 +1,36 @@
+{
+  "timestamp": "2026-08-22T13:06:46.174Z",
+  "workflow": "Managed Repository Audit",
+  "run_id": "32574828442",
+  "commit_sha": "d5835bdbecd883d3cd7360b52a01cba5b0403815",
+  "runtime_repository": "T4H-001/new-account-loop-engineering-runtime",
+  "managed_repository_count": 2,
+  "results": [
+    {
+      "repository": "TML-4PM/the-pen",
+      "runtime": "T4H001/new-account-loop-engineering-runtime",
+      "status": "CONNECTED",
+      "native_actions": "BLOCKED_BILLING",
+      "execution_model": "EXTERNAL_RUNTIME",
+      "checked_at": "2026-08-22T13:06:46.174Z",
+      "clone": true,
+      "files_listed": true,
+      "classification": "REAL",
+      "gaps": []
+    },
+    {
+      "repository": "TML-4PM/mcp-command-centre",
+      "runtime": "T4H001/new-account-loop-engineering-runtime",
+      "status": "CONNECTED",
+      "native_actions": "BLOCKED_BILLING",
+      "execution_model": "EXTERNAL_RUNTIME",
+      "checked_at": "2026-08-22T13:06:46.174Z",
+      "clone": false,
+      "files_listed": false,
+      "classification": "BLOCKED",
+      "gaps": [
+        "Command failed: git clone --depth 1 https://github.com/TML-4PM/mcp-command-centre.git tmp/TML-4PM__mcp-command-centre\nCloning into 'tmp/TML-4PM__mcp-command-centre'...\nfatal: could not read Username for 'https://github.com': No such device or address\n"
+      ]
+    }
+  ]
+}
